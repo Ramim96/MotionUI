@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./colors.css";
+@import "./theme.css";
+@import "./fonts.css";
+@import "./buttons.css";
+
+html {
+    scroll-behavior: smooth;
+}

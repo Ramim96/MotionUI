@@ -1,0 +1,52 @@
+/* 
+    Additional/Custom utility for reusable style in both light and dark theme
+*/
+
+@utility btn {
+    @apply flex justify-center items-center gap-x-1 px-4 py-1;
+    @apply rounded-2xl;
+    @apply transition-colors duration-500;
+}
+
+@utility btn-primary {
+    @apply bg-[var(--color-teal-100)];
+    @apply text-[var(--color-teal-600)] font-[600];
+
+    &:hover {
+        @apply bg-[var(--color-teal-300)];
+        @apply text-[var(--color-white-50)];
+    }
+}
+
+@utility btn-secondary {
+    @apply bg-[var(--color-charcoal-100)];
+    @apply text-[var(--color-charcoal-950)] font-[600];
+
+    &:hover {
+        @apply bg-[var(--color-charcoal-600)];
+        @apply text-[var(--color-white-50)];
+    }
+}
+
+@utility btn-destructive {
+    @apply bg-[var(--color-red-300)];
+    @apply text-[var(--color-red-800)] font-[600];
+
+    &:hover {
+        @apply bg-[var(--color-red-600)];
+        @apply text-[var(--color-white-50)];
+    }
+}
+
+@utility btn-sidenav {
+    @apply py-1 pl-2;
+    @apply w-full;
+    @apply border-l-2 border-l-[var(--hue-primary-contrast)];
+    @apply text-[var(--hue-primary-contrast)] font-semibold;
+    @apply transition-colors duration-300;
+
+    &:hover {
+        @apply border-l-[var(--hue-primary-brand)];
+        @apply text-[var(--hue-primary-brand)];
+    }
+}
