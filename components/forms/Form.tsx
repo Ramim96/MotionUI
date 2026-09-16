@@ -1,7 +1,5 @@
 import * as yup from "yup";
 
-// Components
-import { Reset, Submit } from "@buttons/Button";
 // Contexts
 import { FormContextProvider, FormFieldDataType } from "@contexts/FromContext";
 // Hooks
@@ -102,8 +100,6 @@ const FormContent = ({
                 {children}
             </div>
             <div className={cn("flex justify-end gap-x-3")}>
-                <Reset />
-                <Submit />
             </div>
         </form>
     );

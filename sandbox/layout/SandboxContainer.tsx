@@ -1,10 +1,9 @@
 "use client";
 
-import { useState } from "react";
 // Components
+import { AppThemeSwitch } from "@components/layouts/AppThemeSwitch";
+// Contexts
 import { AppUserContextProvider } from "@contexts/AppUserContext";
-import { IconVariant } from "@icons/IconVariant";
-import { ToggleSwitch } from "@input-fields/ToggleSwitch";
 // Hooks
 import { useAppUserContext } from "@hooks/useAppUserContext";
 // Utils
@@ -13,6 +12,8 @@ import { cn } from "@utils/css";
 interface SandboxContainerComponentProps {
     children: React.ReactNode;
 };
+
+// #region Sandbox container
 
 export const SandboxContainer = ({ children }: SandboxContainerComponentProps) => {
 
@@ -25,6 +26,10 @@ export const SandboxContainer = ({ children }: SandboxContainerComponentProps) =
     );
 };
 
+// #endregion Sandbox container
+
+// #region Sandbox content
+
 interface SandboxContentComponentProps {
     children: React.ReactNode;
 };
@@ -32,47 +37,35 @@ interface SandboxContentComponentProps {
 const SandboxContent = ({ children }: SandboxContentComponentProps) => {
 
     // Hooks
-    const { theme, setTheme } = useAppUserContext();
-
-    // States
-    const [toggled, setToggled] = useState<boolean>(false);
-
-    const toggleSwitchHandler = () => {
-        
-        if (toggled) {
-            setTheme("dark");
-        }
-        else {
-            setTheme("light");
-        }
-
-        setToggled((prevState: boolean) => !prevState);
-    };
+    const { theme } = useAppUserContext();
 
     return (
         <div
             className={cn(
                 "flex flex-col", // Positioning
                 "bg-primary w-full h-full", // Box & sizing
-                theme === "dark"
-                    ? "dark-theme"
-                    : "light-theme",
+                theme,
             )}
         >
-            <div className={cn("flex justify-end p-5")}>
-                <ToggleSwitch
-                    id="theme"
-                    checked={toggled}
-                    iconVariantTrue={IconVariant.Sun}
-                    iconVariantFalse={IconVariant.Moon}
-                    containerSize={cn("w-20")}
-                    onChange={(e) => {}}
-                    onValueChange={() => toggleSwitchHandler()}
-                />
+            <div
+                className={cn(
+                    "flex justify-end p-5", // Positioning
+                    "border-b border-b-neutral-800 bg-neutral-950"
+                )}
+            >
+                <AppThemeSwitch />
             </div>
-            <div className={cn("flex-1")}>
+            <div
+                className={cn(
+                    "flex-1", // Positioning
+                    "bg-background", // Box & sizing
+                    "text-foreground", // Font
+                )}
+            >
                 {children}
             </div>
         </div>
     );
-}
+};
+
+// #endregion Sandbox content

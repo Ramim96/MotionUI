@@ -1,8 +1,8 @@
 "use client";
 
 // Components
-import { Header } from "@layout/Header";
-import { Footer } from "@layout/Footer";
+import { Header } from "./Header";
+import { Footer } from "./Footer";
 // Contexts
 import { AppUserContextProvider } from "@contexts/AppUserContext";
 // Utils
@@ -43,10 +43,9 @@ const RootContainer = ({ children }: RootContainerComponentProps) => {
         <main
             className={cn(
                 "flex flex-col w-dvw h-dvh", // Positioning
-                "bg-primary overflow-hidden", // Box & sizing
-                theme === "dark"
-                    ? "dark-theme"
-                    : "light-theme",
+                "bg-background overflow-hidden", // Box & sizing
+                "text-foreground", // Font
+                theme,
             )}
         >
             <Header />

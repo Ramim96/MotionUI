@@ -1,7 +1,7 @@
 "use client";
 
 // Components
-import { Text, Title } from "@text/Texts";
+import { Text } from "@components/texts/Texts";
 // Utils
 import { cn } from "@utils/css";
 
@@ -16,13 +16,13 @@ export const GlobalSettingsClient = ({ }: GlobalSettingsClientComponentProps) =>
                 "w-full h-full", // Box & sizing
             )}
         >
-            <Title
-                className={cn("text-primary-contrast")}
-                size={cn("sm:text-[2.5rem] md:text-[3.5rem]")}
-            >
+            <Text type="h1">
                 Global settings
-            </Title>
-            <Text className={cn("text-neutral")}>
+            </Text>
+            <Text
+                type="body"
+                className={cn("text-muted")}
+            >
                 Access and configure all configuration settings and domain related information shared across all companies/clients
             </Text>
         </div>

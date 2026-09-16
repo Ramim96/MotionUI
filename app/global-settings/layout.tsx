@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 // Components
-import { Sidebar } from "@layout/Navigation";
+import { Sidenav } from "@components/layouts/Navigations";
 // Routes
 import { GlobalSettingsRouteOptions } from "@routes/global-settings-route-options";
 //Styles
@@ -21,7 +21,7 @@ export default function GlobalSettingsRootLayout({ children }: LayoutProps<"/">)
   return (
     <div className={cn("grid grid-cols-[250px_1fr] gap-x-3 p-3 h-full")}>
         <aside>
-            <Sidebar
+            <Sidenav
               title="Global settings"
               navigationRouteGroups={GlobalSettingsRouteOptions}
             />

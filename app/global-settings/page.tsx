@@ -1,5 +1,5 @@
 // Components
-import { Page, PageContent, PageHeader } from "@layout/Page";
+import { Page, PageContent, PageHeader } from "../../design-system/layouts/Page";
 // Client
 import { GlobalSettingsClient } from "./client";
 // Utils

@@ -24,9 +24,6 @@ export const MotionLogo = ({ className }: MotionLogoComponentProps) => {
                 loading="eager"
                 className={cn(className)}
             />
-            <Title className={cn("text-white-50")}>
-                otion
-            </Title>
         </Link>
     );
 };

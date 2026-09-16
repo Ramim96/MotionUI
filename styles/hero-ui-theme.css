@@ -1,0 +1,113 @@
+/*
+ * HeroUI Theme Customization
+ * Add this to your global.css after importing @heroui/styles
+ * Only includes variables users need to customize
+ * @see https://heroui.com/docs/react/getting-started/theming
+ */
+
+:root,
+.light,
+.default,
+[data-theme="light"],
+[data-theme="default"] {
+  /* Theme Colors — Light Mode */
+  --accent: var(--color-accent);
+  --accent-foreground: var(--color-neutral-0);
+
+  --background: var(--color-neutral-100);
+  --border: var(--color-neutral-250);
+
+  --danger: var(--color-danger);
+  --danger-foreground: var(--color-neutral-0);
+
+  --default: var(--color-neutral-300);
+  --default-foreground: var(--color-neutral-900);
+
+  --field-background: var(--color-neutral-0);
+  --field-border: transparent;
+  --field-foreground: var(--color-neutral-900);
+  --field-placeholder: var(--color-neutral-500);
+
+  --focus: var(--color-accent);
+  --foreground: var(--color-neutral-900);
+  --muted: var(--color-neutral-500);
+
+  --overlay: var(--color-neutral-0);
+  --overlay-foreground: var(--color-neutral-900);
+
+  --scrollbar: var(--color-neutral-300);
+
+  --segment: var(--color-neutral-0);
+  --segment-foreground: var(--color-neutral-900);
+
+  --separator: var(--color-neutral-200);
+
+  --success: var(--color-success);
+  --success-foreground: var(--color-success-dark);
+
+  --surface: var(--color-neutral-0);
+  --surface-foreground: var(--color-neutral-900);
+
+  --surface-secondary: var(--color-neutral-75);
+  --surface-secondary-foreground: var(--color-neutral-900);
+
+  --surface-tertiary: var(--color-neutral-150);
+  --surface-tertiary-foreground: var(--color-neutral-900);
+
+  --warning: var(--color-warning-light);
+  --warning-foreground: var(--color-warning-dark);
+
+  --font-sans: var(--font-manrope);
+}
+
+.dark,
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Theme Colors — Dark Mode */
+  --accent: var(--color-accent);
+  --accent-foreground: var(--color-neutral-0);
+
+  --background: var(--color-neutral-950);
+  --border: var(--color-neutral-700);
+
+  --danger: var(--color-danger);
+  --danger-foreground: var(--color-neutral-0);
+
+  --default: var(--color-neutral-600);
+  --default-foreground: var(--color-neutral-0);
+
+  --field-background: var(--color-neutral-900);
+  --field-border: transparent;
+  --field-foreground: var(--color-neutral-0);
+  --field-placeholder: var(--color-neutral-400);
+
+  --focus: var(--color-accent);
+  --foreground: var(--color-neutral-0);
+  --muted: var(--color-neutral-400);
+
+  --overlay: var(--color-neutral-900);
+  --overlay-foreground: var(--color-neutral-0);
+
+  --scrollbar: var(--color-neutral-400);
+
+  --segment: var(--color-neutral-600);
+  --segment-foreground: var(--color-neutral-0);
+
+  --separator: var(--color-neutral-850);
+
+  --success: var(--color-success);
+  --success-foreground: var(--color-success-dark);
+
+  --surface: var(--color-neutral-900);
+  --surface-foreground: var(--color-neutral-0);
+
+  --surface-secondary: var(--color-neutral-800);
+  --surface-secondary-foreground: var(--color-neutral-0);
+
+  --surface-tertiary: var(--color-neutral-750);
+  --surface-tertiary-foreground: var(--color-neutral-0);
+
+  --warning: var(--color-warning);
+  --warning-foreground: var(--color-warning-darker);
+}

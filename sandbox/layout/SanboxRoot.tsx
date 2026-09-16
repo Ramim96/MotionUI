@@ -1,18 +1,23 @@
-import { FormSandboxClient } from "../FormSandboxClient";
+// Components
+import { SandboxButton } from "@sandbox/SandboxButton";
 import { SandboxContainer } from "./SandboxContainer";
-import { ButtonSandboxClient } from "../ButtonSandboxClient";
-import { TextSandboxClient } from "../TextSandboxClient";
-import { InputSandboxClient } from "@sandbox/InputSandboxClient";
+// Utils
+import { cn } from "@utils/css";
+import { SandboxSwitch } from "@sandbox/SandboxSwitch";
 
 export const SandboxRoot = () => {
 
     return (
-        <div className="flex flex-col w-dvw h-dvh overflow-hidden">
+        <div
+            className={cn(
+                "flex flex-col", // Positioning
+                "bg-background w-dvw h-dvh overflow-hidden", // Box $ sizing
+                "text-foreground", // Font
+            )}
+        >
             <SandboxContainer>
-                {/* <TextSandboxClient /> */}
-                {/* <ButtonSandboxClient /> */}
-                {/* <InputSandboxClient /> */}
-                <FormSandboxClient />
+                <SandboxButton />
+                {/* <SandboxSwitch /> */}
             </SandboxContainer>
         </div>
     );

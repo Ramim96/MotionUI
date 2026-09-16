@@ -1,9 +1,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "./colors.css";
-@import "./theme.css";
 @import "./fonts.css";
-@import "./buttons.css";
+@import "@heroui/styles";
+@import "./hero-ui-color-scheme.css";
+@import "./hero-ui-theme.css";
 
 html {
     scroll-behavior: smooth;

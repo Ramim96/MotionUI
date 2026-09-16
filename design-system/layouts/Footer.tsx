@@ -9,15 +9,12 @@ export const Footer =() => {
         <footer
             className={cn(
                 "px-5 py-1", // Positioning
-                "border-t border-t-black-200 bg-black-950", // Box & sizing
+                "border-t border-t-neutral-800 bg-neutral-950", // Box & sizing
             )}
         >
-            <Text
-                className={cn("text-neutral")}
-                size={cn("sm:text-[0.8rem]")}
-            >
-                &copy; 2026 Motion Inc.
-            </Text>
+            <p className={cn("text-neutral-400 sm:text-sm")}>
+                &copy; 2026 Motion Inc. / v.0.1.0
+            </p>
         </footer>
     );
 };

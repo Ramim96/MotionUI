@@ -1,8 +1,9 @@
 "use client";
 
+import { Surface } from "@heroui/react";
 // Components
-import { Breadcrumbs } from "@layout/Breadcrumb";
-import { Text, Title } from "@text/Texts";
+import { Breadcrumbs } from "./Breadcrumb";
+import { Text } from "@components/texts/Texts";
 // Utils
 import { cn } from "@utils/css";
 
@@ -19,15 +20,16 @@ export const Page = ({
 }: PageComponentProps) => {
 
     return (
-        <div
+        <Surface
+            variant="default"
             className={cn(
                 className,
                 "flex flex-col gap-y-2", // Positioning
-                "rounded-md bg-secondary w-full h-full", // Box & sizing
+                "rounded-2xl w-full h-full", // Box & sizing
             )}
         >
             {children}
-        </div>
+        </Surface>
     );
 };
 
@@ -48,19 +50,20 @@ export const PageHeader = ({
 }: PageHeaderComponentProps) => {
 
     return (
-        <section className={cn("flex flex-col gap-y-2 p-4")}>
+        <section className={cn("flex flex-col gap-y-2 px-8 py-4")}>
         {
             enableBreadcrumbs &&
-                <div>
+                <div className={cn("flex flex-col gap-y-2")}>
                     <Breadcrumbs />
-                    <header className={cn("flex flex-col gap-y-1 mt-2")}>
-                        <Title className={cn("text-primary-contrast")}>
-                            {title}
-                        </Title>
-                        <Text className={cn("text-neutral")}>
-                            {description}
-                        </Text>
-                    </header>
+                    <Text type="h2">
+                        {title}
+                    </Text>
+                    <Text
+                        type="body-sm"
+                        className={cn("text-muted")}
+                    >
+                        {description}
+                    </Text>
                 </div>
         }
         </section>

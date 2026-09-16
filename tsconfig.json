@@ -20,14 +20,16 @@
     ],
     "paths": {
       // Components
-      "@buttons/*": ["./components/buttons/*"],
+      "@components/*": ["./design-system/*"],
+      "@accordions/*": ["./design-system/accordions/*"],
+      "@buttons/*": ["./design-system/buttons/*"],
+      "@icons/*": ["./design-system/icons/*"],
+      "@layouts/*": ["./design-system/layout/*"],
       "@forms/*": ["./components/forms/*"],
-      "@icons/*": ["./components/icons/*"],
       "@input-fields/*": ["./components/input-fields/*"],
-      "@layout/*": ["./components/layout/*"],
+      "@texts/*": ["./design-system/texts/*"],
+      // Sandbox
       "@sandbox/*": ["./sandbox/*"],
-      "@text/*": ["./components/texts/*"],
-      "@tooltips/*": ["./components/tooltips/*"],
       // Context
       "@contexts/*": ["./contexts/*"],
       // Hook

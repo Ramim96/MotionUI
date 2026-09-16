@@ -1,0 +1,36 @@
+@theme inline {
+  /* Neutral — Darkest → Lightest */
+  --color-neutral-950: #181A1A;
+  --color-neutral-900: #333738;
+  --color-neutral-850: #3E4141;
+  --color-neutral-800: #404344;
+  --color-neutral-750: #444748;
+  --color-neutral-700: #454848;
+  --color-neutral-600: #626667;
+  --color-neutral-500: #7B7F80;
+  --color-neutral-400: #A8ABAB;
+  --color-neutral-300: #CECFD0;
+  --color-neutral-250: #D9DADA;
+  --color-neutral-200: #E0E1E1;
+  --color-neutral-150: #E8EAEA;
+  --color-neutral-100: #EAECEC;
+  --color-neutral-75: #EDEFEE;
+  --color-neutral-50: #F4F5F5;
+  --color-neutral-0: #FFFFFF;
+
+  /* Accent — Teal */
+  --color-accent: #438686;
+
+  /* Success — Green */
+  --color-success: #17C964;
+  --color-success-dark: #143A25;
+
+  /* Warning — Amber */
+  --color-warning: #F7B955;
+  --color-warning-light: #F5A524;
+  --color-warning-dark: #6b550b;
+  --color-warning-darker: #3A3214;
+
+  /* Danger — Red */
+  --color-danger: #E91429;
+}

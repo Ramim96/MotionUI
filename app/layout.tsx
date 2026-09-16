@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 // Components
-import { Root } from "@layout/Root";
+import { Root } from "../design-system/layouts/Root";
 import { SandboxRoot } from "@sandbox/layout/SanboxRoot";
 //Styles
 import "@styles/globals.css"
@@ -32,7 +32,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 
     if (sandBoxActive === "true") {
         return (
-            <html lang="en" className={cn("font-sans", manrope.variable)}>
+            <html
+              lang="en"
+              suppressHydrationWarning data-vibrant-palette="true" // HeroUI config
+              className={cn("font-sans", manrope.variable)}
+            >
               <body
                   className={cn(
                     "w-dvw h-dvh", // Box & sizing
@@ -46,7 +50,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     }
     else {
         return (
-            <html lang="en" className={cn("font-sans", manrope.variable)}>
+            <html
+              lang="en"
+              suppressHydrationWarning data-vibrant-palette="true" // HeroUI config
+              className={cn("font-sans", manrope.variable)}
+            >
                 <body
                     className={cn(
                       "flex flex-col", // Positioning
@@ -54,7 +62,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
                       `${manrope.variable}` // Font
                     )}
                 >
-                    <Root>{children}</Root>
+                    <Root>
+                        {children}
+                    </Root>
                 </body>
             </html>
         );
