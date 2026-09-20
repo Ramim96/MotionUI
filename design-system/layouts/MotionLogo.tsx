@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-// Components
-import { Title } from "@text/Texts";
 // Utils
 import { cn } from "@utils/css";
 

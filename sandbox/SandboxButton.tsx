@@ -1,6 +1,6 @@
 // Components
-import { Button, IconButton, Link } from "@components/buttons/Buttons";
-import { IconVariant } from "@icons/IconVariant";
+import { Button, IconButton, Link } from "@design-system/Buttons";
+import { IconVariant } from "@design-system/icons/IconVariant";
 // Utils
 import { cn } from "@utils/css";
 

@@ -1,7 +1,7 @@
 "use client";
 
 // Components
-import { Text } from "@components/texts/Texts";
+import { Text } from "@design-system/Texts";
 // Utils
 import { cn } from "@utils/css";
 

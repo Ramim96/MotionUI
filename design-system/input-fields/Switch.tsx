@@ -1,21 +1,44 @@
 import React from "react";
 import {
     Description,
+    FieldError,
     Switch as HeroSwitch,
     SwitchGroup as HeroSwitchGroup,
+    Label
 } from "@heroui/react";
 import type { LucideIcon } from "lucide-react";
 // Components
-import { IconVariant } from "@icons/IconVariant";
-import { IconFactory } from "@icons/IconFactory";
-// Types
+import { IconVariant } from "@design-system/icons/IconVariant";
+import { IconFactory } from "@design-system/icons/IconFactory";
+// Interfaces
+// Interface
 import {
-    LabelPositionType,
-    SwitchGroupOrientationType,
-    SwitchSizeType,
-} from "./Types";
+    FieldBaseComponentProps,
+    FieldBehaviourComponentProps,
+    FieldStatusComponentProps,
+    FieldStyleComponentProps,
+    FieldValidationComponentProps,
+    FieldValueComponentProps
+} from "../../interfaces/InputField";
 // Utils
 import { cn } from "@utils/css";
+
+// #region Types
+
+export type LabelPositionType =
+    | "left"
+    | "right";
+
+export type SwitchSizeType =
+    | "sm"
+    | "md"
+    | "lg";
+
+export type SwitchGroupOrientationType =
+    | "vertical"
+    | "horizontal";
+
+// #endregion Types
 
 const getIcon = (iconVariant?: IconVariant): LucideIcon | undefined => {
 
@@ -28,37 +51,45 @@ const getIcon = (iconVariant?: IconVariant): LucideIcon | undefined => {
 
 // #region Switch
 
-interface SwitchComponentProps {
-    name?: string;
-    label?: string;
+interface SwitchComponentProps extends
+    Omit<FieldBaseComponentProps, "type" | "variant" | "placeholder">,
+    FieldValueComponentProps<string>,
+    FieldStatusComponentProps,
+    FieldValidationComponentProps,
+    Omit<FieldStyleComponentProps, "fullWidth">,
+    FieldBehaviourComponentProps<boolean> {
+    isSelected: boolean;
     labelPosition?: LabelPositionType;
-    description?: string;
-    defaultSelected?: boolean;
-    isSelected?: boolean;
-    value?: string;
     iconVariantGeneric?: IconVariant;
     iconVariantSelected?: IconVariant;
     iconVariantUnselected?: IconVariant;
     size?: SwitchSizeType;
-    isDisabled?: boolean;
-    className?: string;
-    onChange?: (isSelected: boolean) => void;
-}
+};
 
 export const Switch = ({
-    name,
-    label,
-    labelPosition = "right",
-    description,
-    defaultSelected,
     isSelected,
-    value,
+    labelPosition = "right",
     iconVariantGeneric,
     iconVariantSelected,
     iconVariantUnselected,
     size,
+    // FieldBaseComponentProps
+    id,
+    name,
+    label,
+    description,
+    // FieldValueComponentProps
+    value,
+    // FieldStatusComponentProps
     isDisabled,
+    isReadOnly,
+    isRequired,
+    // FieldValidationComponentProps
+    isInvalid,
+    fieldError,
+    // FieldStyleComponentProps
     className,
+    // FieldBehaviourComponentProps
     onChange,
 }: SwitchComponentProps) => {
 
@@ -66,16 +97,21 @@ export const Switch = ({
     const IconSelected = getIcon(iconVariantSelected);
     const IconUnselected = getIcon(iconVariantUnselected);
 
-    const renderLabel = (flexPosition: string) => {
+    const renderLabel = (flexPosition: "items-start" | "items-end") => {
 
         return (
             <div className={cn("flex flex-col", flexPosition)}>
-                {label}
+                {
+                    label &&
+                        <Label>{label}</Label>
+                }
                 {
                     description &&
-                        <Description>
-                            {description}
-                        </Description>
+                        <Description>{description}</Description>
+                }
+                {
+                    (isInvalid && fieldError) &&
+                        <FieldError>{fieldError}</FieldError>
                 }
             </div>
         );
@@ -115,13 +151,16 @@ export const Switch = ({
 
     return (
         <HeroSwitch
+            id={id}
             name={name}
-            defaultSelected={defaultSelected}
-            isSelected={isSelected}
             value={value}
-            size={size}
             isDisabled={isDisabled}
-            className={className}
+            isReadOnly={isReadOnly}
+            isRequired={isRequired}
+            isInvalid={isInvalid}
+            isSelected={isSelected}
+            size={size}
+            className={cn(className)}
             onChange={onChange}
         >
             <HeroSwitch.Content>

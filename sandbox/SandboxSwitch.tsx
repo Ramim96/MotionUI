@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 // Components
-import { IconVariant } from "@icons/IconVariant";
-import { Switch, SwitchGroup } from "@components/switch/Switch";
+import { IconVariant } from "@design-system/icons/IconVariant";
+import { Switch, SwitchGroup } from "@design-system/input-fields/Switch";
 // Utils
 import { cn } from "@utils/css";
 

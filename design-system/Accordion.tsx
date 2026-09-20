@@ -1,41 +1,58 @@
-import React, { Key } from "react";
-import { Accordion as HeroAccordion } from "@heroui/react";
+import React from "react";
+import { Accordion as HeroAccordion, Key } from "@heroui/react";
 import { LucideIcon } from "lucide-react";
 // Components
-import { IconVariant } from "@components/icons/IconVariant";
-// Types
-import { AccordionVariantType } from "./Types";
+import { IconVariant } from "@design-system/icons/IconVariant";
 // Utils
 import { cn } from "@utils/css";
 import { getIcon } from "@utils/icon-utils";
+
+// #region Types
+
+export type AccordionVariantType =
+    | "default"
+    | "surface";
+
+// #endregion Types
 
 // #region Accordion
 
 interface AccordionComponentProps {
     children: React.ReactNode;
     variant?: AccordionVariantType;
-    hideSeparator?: boolean;
     allowsMultipleExpanded?: boolean;
+    expandedKeys?: Iterable<Key>;
+    defaultExpandedKeys?: Iterable<Key>;
+    hideSeparator?: boolean;
+    // State
     isDisabled?: boolean;
     className?: string;
+    onExpandedChange?: (keys: Set<Key>) => void;
 };
 
 export const Accordion = ({
     children,
     variant,
-    hideSeparator,
     allowsMultipleExpanded,
+    expandedKeys,
+    defaultExpandedKeys,
+    hideSeparator, 
+    // State
     isDisabled,
     className,
+    onExpandedChange,
 }: AccordionComponentProps) => {
 
     return (
         <HeroAccordion
             variant={variant}
-            hideSeparator={hideSeparator}
             allowsMultipleExpanded={allowsMultipleExpanded}
+            expandedKeys={expandedKeys}
+            defaultExpandedKeys={defaultExpandedKeys}
+            hideSeparator={hideSeparator}
             isDisabled={isDisabled}
             className={className}
+            onExpandedChange={onExpandedChange}
         >
             {children}
         </HeroAccordion>
@@ -49,26 +66,39 @@ export const Accordion = ({
 interface AccordionItemComponentProps {
     headerTitle: string;
     children: React.ReactNode;
+    id?: string;
+    isExpanded?: boolean;
+    defaultExpanded?: boolean;
     headerIconVariant?: IconVariant;
     triggerIconVariant?: IconVariant;
     accordionHeaderClassName?: string;
     accordionBodyClassName?: string;
+    onExpandedChange?: (isExpanded: boolean) => void;
 };
 
 export const AccordionItem = ({
     headerTitle,
     children,
+    id,
+    isExpanded,
+    defaultExpanded,
     headerIconVariant,
     triggerIconVariant,
     accordionHeaderClassName,
     accordionBodyClassName,
+    onExpandedChange,
 }: AccordionItemComponentProps) => {
 
     const HeaderAccordionIcon: LucideIcon | undefined = getIcon(triggerIconVariant);
     const AccordionTriggerIcon: LucideIcon | undefined = getIcon(headerIconVariant, IconVariant.ChevronDown);
 
     return (
-        <HeroAccordion.Item>
+        <HeroAccordion.Item
+            id={id}
+            isExpanded={isExpanded}
+            defaultExpanded={defaultExpanded}
+            onExpandedChange={onExpandedChange}
+        >
             <HeroAccordion.Heading className={cn(accordionHeaderClassName)}>
                 <HeroAccordion.Trigger>
                     {

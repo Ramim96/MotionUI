@@ -1,7 +1,7 @@
 import { LucideIcon } from "lucide-react";
 // Components
-import { IconVariant } from "@components/icons/IconVariant";
-import { IconFactory } from "@components/icons/IconFactory";
+import { IconVariant } from "@design-system/icons/IconVariant";
+import { IconFactory } from "@design-system/icons/IconFactory";
 
 export const getIcon = (
     iconVariant?: IconVariant,

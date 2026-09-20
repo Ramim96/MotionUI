@@ -10,12 +10,12 @@ export const GlobalSettingsRouteOptions: NextNavigationRouteGroup[] = [
         path: "/global-settings",
         routeOptions: [
             {
-                routeOptionCode: "app-users",
+                routeOptionCode: "global-app-users",
                 routeOptionName: "App users",
                 routeOptionPath: "/global-app-users",
             },
             {
-                routeOptionCode: "app-roles",
+                routeOptionCode: "global-app-roles",
                 routeOptionName: "App roles",
                 routeOptionPath: "/global-app-roles",
             },

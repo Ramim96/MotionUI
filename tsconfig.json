@@ -20,14 +20,7 @@
     ],
     "paths": {
       // Components
-      "@components/*": ["./design-system/*"],
-      "@accordions/*": ["./design-system/accordions/*"],
-      "@buttons/*": ["./design-system/buttons/*"],
-      "@icons/*": ["./design-system/icons/*"],
-      "@layouts/*": ["./design-system/layout/*"],
-      "@forms/*": ["./components/forms/*"],
-      "@input-fields/*": ["./components/input-fields/*"],
-      "@texts/*": ["./design-system/texts/*"],
+      "@design-system/*": ["./design-system/*"],
       // Sandbox
       "@sandbox/*": ["./sandbox/*"],
       // Context

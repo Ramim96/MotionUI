@@ -4,6 +4,7 @@ import { SandboxContainer } from "./SandboxContainer";
 // Utils
 import { cn } from "@utils/css";
 import { SandboxSwitch } from "@sandbox/SandboxSwitch";
+import { SandboxInput } from "@sandbox/SandboxInput";
 
 export const SandboxRoot = () => {
 
@@ -16,7 +17,8 @@ export const SandboxRoot = () => {
             )}
         >
             <SandboxContainer>
-                <SandboxButton />
+                <SandboxInput />
+                {/* <SandboxButton /> */}
                 {/* <SandboxSwitch /> */}
             </SandboxContainer>
         </div>

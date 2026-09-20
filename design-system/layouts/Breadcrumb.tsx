@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { Breadcrumbs as HeroBreadcrumbs } from "@heroui/react";
 // Utils
 import { cn } from "@utils/css";
-import { Text } from "@components/texts/Texts";
+import { Text } from "@design-system/Texts";
 
 export const Breadcrumbs = () => {
 

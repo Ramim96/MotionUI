@@ -1,8 +1,8 @@
 "use client";
 
 // Components
-import { IconVariant } from "@icons/IconVariant";
-import { Switch } from "@components/switch/Switch";
+import { IconVariant } from "@design-system/icons/IconVariant";
+import { Switch } from "@design-system/input-fields/Switch";
 // Contexts
 import { useAppUserContext } from "@hooks/useAppUserContext";
 
