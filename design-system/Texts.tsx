@@ -1,10 +1,37 @@
 import React from "react";
 // Components
-import { Typography } from "@heroui/react";
-// Types
-import { TextAlignment, TextType, TextWeight } from "./Types";
+import { Description as HeroDescription, Typography } from "@heroui/react";
 // Utils
 import { cn } from "@utils/css";
+
+// #region Types
+
+export type TextType = 
+    | "h1"
+    | "h2"
+    | "h3"
+    | "h4"
+    | "h5"
+    | "h6"
+    | "body-xs"
+    | "body"
+    | "body-sm"
+
+export type TextAlignment =
+    | "start"
+    | "center"
+    | "end"
+    | "justify";
+
+export type TextWeight =
+    | "normal"
+    | "medium"
+    | "semibold"
+    | "bold";
+
+// #endregion Types
+
+// #region Text
 
 interface TextComponentProps {
     children: React.ReactNode;
@@ -17,10 +44,10 @@ interface TextComponentProps {
 
 export const Text = ({
     children,
-    type="body-sm",
-    align="start",
-    weight="normal",
-    truncate=false,
+    type = "body-sm",
+    align = "start",
+    weight = "normal",
+    truncate = false,
     className,
 }: TextComponentProps) => {
 
@@ -39,3 +66,5 @@ export const Text = ({
         </Typography>
     );
 };
+
+// #endregion Text

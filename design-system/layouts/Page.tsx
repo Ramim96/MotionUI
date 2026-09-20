@@ -1,9 +1,9 @@
 "use client";
 
-import { Surface } from "@heroui/react";
+import { Description, Surface } from "@heroui/react";
 // Components
 import { Breadcrumbs } from "./Breadcrumb";
-import { Text } from "@components/texts/Texts";
+import { Text } from "@design-system/Texts";
 // Utils
 import { cn } from "@utils/css";
 
@@ -58,12 +58,9 @@ export const PageHeader = ({
                     <Text type="h2">
                         {title}
                     </Text>
-                    <Text
-                        type="body-sm"
-                        className={cn("text-muted")}
-                    >
+                    <Description className={cn("text-muted")}>
                         {description}
-                    </Text>
+                    </Description>
                 </div>
         }
         </section>

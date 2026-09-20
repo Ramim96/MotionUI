@@ -1,7 +1,7 @@
 "use client";
 
 // Components
-import { AppThemeSwitch } from "@components/layouts/AppThemeSwitch";
+import { AppThemeSwitch } from "@design-system/layouts/AppThemeSwitch";
 // Contexts
 import { AppUserContextProvider } from "@contexts/AppUserContext";
 // Hooks

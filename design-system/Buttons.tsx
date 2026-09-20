@@ -6,13 +6,28 @@ import {
 } from "@heroui/react";
 import type { LucideIcon } from "lucide-react";
 // Components
-import { IconFactory } from "@icons/IconFactory";
-import type { IconVariant } from "@icons/IconVariant";
-// Types
-import { ButtonSize, ButtonVariant } from "./Types";
+import type { IconVariant } from "@design-system/icons/IconVariant";
 // Utils
 import { cn } from "@utils/css";
 import { getIcon } from "@utils/icon-utils";
+
+// #region Types
+
+export type ButtonVariant =
+    | "primary"
+    | "secondary"
+    | "tertiary"
+    | "outline"
+    | "ghost"
+    | "danger"
+    | "danger-soft";
+
+export type ButtonSize =
+    | "sm"
+    | "md"
+    | "lg";
+
+// #endregion Types
 
 interface BaseButtonComponentProps {
     variant?: ButtonVariant;

@@ -1,15 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { LucideIcon } from "lucide-react";
+import { Key } from "@heroui/react";
 // Common
 import { NextNavigationRouteGroup, NextNavigationRouteOption } from "@shared/interfaces/next-navigation-route";
 // Component
-import { Accordion, AccordionItem } from "@components/accordions/Accordion";
-import { IconFactory } from "@components/icons/IconFactory";
-import { IconVariant } from "@components/icons/IconVariant";
+import { Accordion, AccordionItem } from "@design-system/Accordion";
+import { SearchField } from "@design-system/input-fields/SearchField";
 // Routes
 import { GlobalNavigationRouteOptions } from "@routes/global-navigation-route-options";
 // Utils
@@ -64,11 +63,13 @@ export const GlobalNavigation = () => {
 // #region Side navigation
 
 interface SidenavComponentProps {
+    code: string;
     title: string;
     navigationRouteGroups: NextNavigationRouteGroup[];
 };
 
 export const Sidenav = ({
+    code,
     title,
     navigationRouteGroups,
 }: SidenavComponentProps) => {
@@ -76,44 +77,72 @@ export const Sidenav = ({
     // Hooks
     const pathname = usePathname();
 
+    // States
+    const [filteredRouteGroups, setFilteredRouteGroups] = useState<NextNavigationRouteGroup[]>(navigationRouteGroups);
+    const [expandedKeys, setExpandedKeys] = useState<Iterable<Key>>([]);
+    const [seachFieldValue, setSearchFieldValue] = useState<string>();
+
     const pathnameSegments = pathname
         .split("/")
         .filter(Boolean) ?? "";
 
+    // URL segments
     const selectedKey: string = `/${pathnameSegments[0]}/${pathnameSegments[1]}`;
 
-    // States
-    const [filteredRouteGroups, setFilteredRouteGroups] = useState<NextNavigationRouteGroup[]>(navigationRouteGroups);
+    // Use effect
+    useLayoutEffect(() => {
 
-    const AccordionTriggerIcon: LucideIcon = IconFactory[IconVariant.ChevronDown];
+        if (typeof window === "undefined") {
+            setExpandedKeys([]);
 
-    // const onSearchInputChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+            return;
+        }
 
-    //     const userTypedValue: string = e.target.value.trim().toLowerCase();
+        const stored: string | null = localStorage.getItem(`${code}`);
 
-    //     if (userTypedValue === "" || userTypedValue.length === 0) {
-    //         setFilteredRouteGroups(navigationRouteGroups);
-    //         setSearchString("");
-    //         return;
-    //     }
+        if (stored === null || stored === undefined) {
+            setExpandedKeys([]);
 
-    //     const filteredOptions: NextNavigationRouteGroup[] = navigationRouteGroups
-    //         .map((nextNavigationRouteGroup: NextNavigationRouteGroup) => {
+            return;
+        }
 
-    //             const resultOptionGroup: NextNavigationRouteGroup = {...nextNavigationRouteGroup};
+        setExpandedKeys(stored.split(",") as Key[]);
+  }, [code]);
 
-    //             resultOptionGroup.routeOptions = nextNavigationRouteGroup.routeOptions
-    //                 .filter((nextRouteOption: NextNavigationRouteOption) => nextRouteOption.routeOptionName.toLowerCase().includes(userTypedValue));
+    // Funtionalities
+    const onSearchInputChangeHandler = (value: string) => {
+
+        const userTypedValue: string = value.trim().toLowerCase();
+
+        if (userTypedValue === "" || userTypedValue.length === 0) {
+            setFilteredRouteGroups(navigationRouteGroups);
+            setSearchFieldValue(`${title}`);
+            return;
+        }
+
+        const filteredOptions: NextNavigationRouteGroup[] = navigationRouteGroups
+            .map((nextNavigationRouteGroup: NextNavigationRouteGroup) => {
+
+                const resultOptionGroup: NextNavigationRouteGroup = {...nextNavigationRouteGroup};
+
+                resultOptionGroup.routeOptions = nextNavigationRouteGroup.routeOptions
+                    .filter((nextRouteOption: NextNavigationRouteOption) => nextRouteOption.routeOptionName.toLowerCase().includes(userTypedValue));
                 
-    //             return resultOptionGroup;
-    //         }
-    //     )
-    //     .filter((nextFilteredOption: NextNavigationRouteGroup) => nextFilteredOption.routeOptions.length > 0);
+                return resultOptionGroup;
+            }
+        )
+        .filter((nextFilteredOption: NextNavigationRouteGroup) => nextFilteredOption.routeOptions.length > 0);
 
-    //     setSearchString(userTypedValue);
-    //     setFilteredRouteGroups(filteredOptions);
-    //     return;
-    // };
+        setSearchFieldValue(userTypedValue);
+        setFilteredRouteGroups(filteredOptions);
+        return;
+    };
+
+    const handleExpandChange = (keys: Set<Key>) => {
+
+        const expandedAccordionItems: Key[] = [...keys];
+        localStorage.setItem(`${code}`, expandedAccordionItems.toString());
+    };
 
     return (
         <nav
@@ -123,17 +152,25 @@ export const Sidenav = ({
             )}
         >
             {/* App section title */}
-            <div className={cn("flex flex-col gap-y-2")}>
-                <p className={cn("text-muted")}>{title}</p>
-            </div>
+            <SearchField
+                id="side-nav-search"
+                label={title}
+                description="Filter the navigation options"
+                value={seachFieldValue}
+                onChange={(value: string) => onSearchInputChangeHandler(value)}
+            />
             <Accordion
                 allowsMultipleExpanded
+                hideSeparator
                 className="w-full"
+                expandedKeys={expandedKeys}
+                onExpandedChange={handleExpandChange}
             >
             {
                 filteredRouteGroups.map((nextFilteredRouteGroup: NextNavigationRouteGroup) =>
                     <AccordionItem
-                        key={`side-nav-${nextFilteredRouteGroup.groupCode}`}
+                        key={nextFilteredRouteGroup.groupCode}
+                        id={nextFilteredRouteGroup.groupCode}
                         headerTitle={nextFilteredRouteGroup.groupName}
                     >
                         <div className={cn("flex flex-col")}>

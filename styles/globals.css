@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "./colors.css";
 @import "./fonts.css";
 @import "@heroui/styles";
 @import "./hero-ui-color-scheme.css";
