@@ -1,18 +1,16 @@
 // Components
-import { Page, PageContent, PageHeader } from "../../design-system/layouts/Page";
+import { PageContainer, PageContainerContent, PageContainerHeader } from "@design-system/layouts/page-container";
 // Client
 import { GlobalSettingsClient } from "./client";
-// Utils
-import { cn } from "@utils/css";
 
 export default function Main () {
 
     return (
-        <Page>
-            <PageHeader />
-            <PageContent>
+        <PageContainer>
+            <PageContainerHeader />
+            <PageContainerContent>
               <GlobalSettingsClient />
-            </PageContent>
-        </Page>
+            </PageContainerContent>
+        </PageContainer>
     );
 };

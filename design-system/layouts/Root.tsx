@@ -1,13 +1,14 @@
 "use client";
 
 // Components
-import { Header } from "./Header";
-import { Footer } from "./Footer";
+import { Header } from "./header";
+import { Footer } from "./footer";
 // Contexts
-import { AppUserContextProvider } from "@contexts/AppUserContext";
+import { AppUserContextProvider } from "@contexts/app-user-context";
+// Hooks
+import { useAppUserContext } from "@hooks/use-app-user-context";
 // Utils
-import { cn } from "@utils/css";
-import { useAppUserContext } from "@hooks/useAppUserContext";
+import { cn } from "@lib/utils/css";
 
 // #region App root
 
