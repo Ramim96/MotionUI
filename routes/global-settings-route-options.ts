@@ -1,5 +1,5 @@
 // Common
-import { NextNavigationRouteGroup } from "../shared/interfaces/next-navigation-route";
+import { NextNavigationRouteGroup } from "../interfaces/next-navigation-route";
 
 // #region Global settings
 

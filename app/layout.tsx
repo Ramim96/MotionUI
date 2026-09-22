@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 // Components
-import { Root } from "../design-system/layouts/Root";
-import { SandboxRoot } from "@sandbox/layout/SanboxRoot";
+import { Root } from "@design-system/layouts/root";
+import { SandboxRoot } from "@sandbox/layout/sandbox-root";
 //Styles
 import "@styles/globals.css"
 // Utils
-import { cn } from "@utils/css";
-import { getEnvVariable } from "@utils/env";
+import { cn } from "@lib/utils/css";
+import { getEnvVariable } from "@lib/utils/env";
 
 const manrope = Manrope({
   variable: "--font-manrope",

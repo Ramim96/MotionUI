@@ -1,20 +1,20 @@
 // Components
-import { Page, PageContent, PageHeader } from "../../../design-system/layouts/Page";
+import { PageContainer, PageContainerContent, PageContainerHeader } from "@design-system/layouts/page-container";
 // Client
 import { GlobalAppRolesClient } from "./client";
 
 export default function GlobalAppRolesPage () {
 
     return (
-        <Page>
-            <PageHeader
+        <PageContainer>
+            <PageContainerHeader
                 title="App roles"
                 description="Create and manage the page accessibility and permissions to manipulate data"
                 enableBreadcrumbs
             />
-            <PageContent>
+            <PageContainerContent>
                 <GlobalAppRolesClient />
-            </PageContent>
-        </Page>
+            </PageContainerContent>
+        </PageContainer>
     );
 };

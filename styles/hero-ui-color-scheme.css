@@ -20,6 +20,7 @@
 
   /* Accent — Teal */
   --color-accent: #438686;
+  --color-accent-dark: #285050;
 
   /* Success — Green */
   --color-success: #17C964;
@@ -32,5 +33,7 @@
   --color-warning-darker: #3A3214;
 
   /* Danger — Red */
-  --color-danger: #E91429;
+  --color-danger: #CC3A49;
+  --color-danger-dark: #7A222B;
+  --color-danger-soft-dark: #E59CA4;
 }

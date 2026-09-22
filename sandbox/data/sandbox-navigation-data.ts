@@ -1,14 +1,6 @@
-// Common
-import { NextNavigationRouteOption } from "../interfaces/next-navigation-route";
-
-// #region Global navigation
+import { NextNavigationRouteOption } from "../../interfaces/next-navigation-route";
 
 export const GlobalNavigationRouteOptions: NextNavigationRouteOption[] = [
-    {
-        routeOptionCode: "dashboard",
-        routeOptionName: "Dashboard",
-        routeOptionPath: "/dashboard",
-    },
     {
         routeOptionCode: "employees",
         routeOptionName: "Employees",
@@ -25,5 +17,3 @@ export const GlobalNavigationRouteOptions: NextNavigationRouteOption[] = [
         routeOptionPath: "/global-settings",
     },
 ];
-
-// #endregion Global navigation

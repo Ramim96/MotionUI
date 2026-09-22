@@ -1,9 +1,9 @@
 "use client";
 
 // Components
-import { Text } from "@design-system/Texts";
+import { Text } from "@design-system/ui/typography";
 // Utils
-import { cn } from "@utils/css";
+import { cn } from "@lib/utils/css";
 
 interface GlobalSettingsClientComponentProps {};
 

@@ -1,7 +1,7 @@
 "use client";
 
 // Utils
-import { cn } from "@utils/css";
+import { cn } from "@lib/utils/css";
 
 export const GlobalAppRolesClient = () => {
 

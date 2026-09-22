@@ -27,14 +27,18 @@
       "@contexts/*": ["./contexts/*"],
       // Hook
       "@hooks/*": ["./hooks/*"],
+      // Interfaces
+      "@interfaces/*": ["./interfaces/*"],
+      // Libs
+      "@lib/*": ["./lib/*"],
       // Routes
       "@routes/*": ["./routes/*"],
       // Shared
       "@shared/*": ["./shared/*"],
       // Styles
       "@styles/*": ["./styles/*"],
-      // Utils
-      "@utils/*": ["./utils/*"],
+      // Types
+      "@types/*": ["./types/*"],
     }
   },
   "include": [
