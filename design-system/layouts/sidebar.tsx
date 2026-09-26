@@ -5,12 +5,12 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Key } from "@heroui/react";
 // Common
-import { NextNavigationRouteGroup, NextNavigationRouteOption } from "../../interfaces/next-navigation-route";
+import { NextNavigationRouteGroup, NextNavigationRouteOption } from "../../interfaces/components/next-navigation-route";
 // Component
 import { Accordion, AccordionItem } from "@design-system/ui/accordion";
 import { SearchField } from "@design-system/ui/search-field";
 // Utils
-import { cn } from "@lib/utils/css";
+import { cn } from "@lib/utils/css-utils";
 
 // #region Sidebar
 

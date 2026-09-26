@@ -3,7 +3,7 @@
 // Components
 import { Text } from "@design-system/ui/typography";
 // Utils
-import { cn } from "@lib/utils/css";
+import { cn } from "@lib/utils/css-utils";
 
 interface GlobalSettingsClientComponentProps {};
 

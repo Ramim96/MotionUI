@@ -1,9 +1,9 @@
 // Components
-import { ThemeSwitch } from "@design-system/common/theme-switch";
-import { Logo } from "@design-system/common/logo";
+import { ThemeSwitch } from "@design-system/ui/theme-switch";
+import { Logo } from "@design-system/ui/logo";
 import { Navbar } from "./navbar";
 // Utils
-import { cn } from "@lib/utils/css";
+import { cn } from "@lib/utils/css-utils";
 
 export const Header = () => {
     

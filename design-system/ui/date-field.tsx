@@ -8,6 +8,7 @@ import {
 } from "@heroui/react";
 // Components
 import { Description } from "@design-system/ui/typography";
+import { Info } from "@design-system/ui/tooltip";
 // Interfaces
 import {
     FieldBaseComponentProps,
@@ -16,9 +17,9 @@ import {
     FieldStyleComponentProps,
     FieldValidationComponentProps,
     FieldValueComponentProps
-} from "../../interfaces/input-field";
+} from "../../interfaces/components/input-field";
 // Utils
-import { cn } from "@lib/utils/css";
+import { cn } from "@lib/utils/css-utils";
 
 interface DateFieldComponentProps extends
     Omit<FieldBaseComponentProps, "type" | "variant" | "placeholder">,
@@ -36,6 +37,7 @@ export const DateField = ({
     label,
     description,
     ariaLabel,
+    tooltip,
     // FieldValueComponentProps
     value,
     // FieldStatusComponentProps
@@ -74,7 +76,20 @@ export const DateField = ({
         >
             {
                 label &&
-                    <Label htmlFor={id}>{label}</Label>
+                    <div className={cn("flex justify-between items-center")}>
+                        <Label
+                            htmlFor={id}
+                            isDisabled={isDisabled}
+                            isRequired={isRequired}
+                            isInvalid={isInvalid}
+                        >
+                            {label}
+                        </Label>
+                        {
+                            tooltip &&
+                                <Info tooltipContent={tooltip} />
+                        }
+                    </div>
             }
             {/* Input field */}
             <HeroDateField.Group>

@@ -3,11 +3,11 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 // Common
-import { NextNavigationRouteOption } from "../../interfaces/next-navigation-route";
+import { NextNavigationRouteOption } from "../../interfaces/components/next-navigation-route";
 // Routes
 import { GlobalNavigationRouteOptions } from "@routes/global-navigation-route-options";
 // Utils
-import { cn } from "@lib/utils/css";
+import { cn } from "@lib/utils/css-utils";
 
 // #region Navbar
 

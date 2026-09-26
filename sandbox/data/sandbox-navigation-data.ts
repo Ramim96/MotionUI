@@ -1,4 +1,4 @@
-import { NextNavigationRouteOption } from "../../interfaces/next-navigation-route";
+import { NextNavigationRouteOption } from "../../interfaces/components/next-navigation-route";
 
 export const GlobalNavigationRouteOptions: NextNavigationRouteOption[] = [
     {

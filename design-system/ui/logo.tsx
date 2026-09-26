@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 // Utils
-import { cn } from "../../lib/utils/css";
+import { cn } from "../../lib/utils/css-utils";
 
 interface MotionLogoComponentProps {
     className?: string;

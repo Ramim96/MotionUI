@@ -5,7 +5,7 @@ import { Surface } from "@heroui/react";
 import { Breadcrumbs } from "@design-system/ui/breadcrumb";
 import { Description, Text } from "@design-system/ui/typography";
 // Utils
-import { cn } from "@lib/utils/css";
+import { cn } from "@lib/utils/css-utils";
 
 // #region Page
 

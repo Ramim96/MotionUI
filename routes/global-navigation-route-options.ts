@@ -1,5 +1,5 @@
 // Common
-import { NextNavigationRouteOption } from "../interfaces/next-navigation-route";
+import { NextNavigationRouteOption } from "../interfaces/components/next-navigation-route";
 
 // #region Global navigation
 

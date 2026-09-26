@@ -7,7 +7,7 @@ import {
     RadioGroup,
 } from "@design-system/ui/radio-field";
 // Utils
-import { cn } from "../lib/utils/css";
+import { cn } from "../lib/utils/css-utils";
 
 export const SandboxRadioGroup = () => {
 
@@ -18,6 +18,9 @@ export const SandboxRadioGroup = () => {
     const [disabledRadio, setDisabledRadio] = useState<string | undefined>("option-1");
     const [readOnlyRadio, setReadOnlyRadio] = useState<string | undefined>("option-1");
     const [horizontalRadio, setHorizontalRadio] = useState<string | undefined>("option-1");
+    const [tooltipRadio, setTooltipRadio] = useState<string | undefined>("option-1");
+    const [noLabelRadio, setNoLabelRadio] = useState<string | undefined>("option-1");
+    const [customClassRadio, setCustomClassRadio] = useState<string | undefined>("option-1");
 
     return (
         <div
@@ -92,14 +95,17 @@ export const SandboxRadioGroup = () => {
                         <RadioField
                             value="option-1"
                             label="Option 1"
+                            isDisabled
                         />
                         <RadioField
                             value="option-2"
                             label="Option 2"
+                            isDisabled
                         />
                         <RadioField
                             value="option-3"
                             label="Option 3"
+                            isDisabled
                         />
                     </RadioGroup>
 
@@ -156,6 +162,7 @@ export const SandboxRadioGroup = () => {
                         id="radio-invalid"
                         name="radio-invalid"
                         label="Invalid options"
+                        description="This group is invalid"
                         value={invalidRadio}
                         isInvalid
                         onChange={(value?: string) => setInvalidRadio(value)}
@@ -199,6 +206,60 @@ export const SandboxRadioGroup = () => {
                         />
                     </RadioGroup>
 
+                    {/* Required + invalid */}
+                    <RadioGroup
+                        id="radio-required-invalid"
+                        name="radio-required-invalid"
+                        label="Required invalid options"
+                        description="A valid option must be selected"
+                        value={emptyRadio}
+                        isRequired
+                        isInvalid
+                        fieldError="Please select an option"
+                        onChange={(value?: string) => setEmptyRadio(value)}
+                    >
+                        <RadioField
+                            value="option-1"
+                            label="Option 1"
+                        />
+                        <RadioField
+                            value="option-2"
+                            label="Option 2"
+                        />
+                        <RadioField
+                            value="option-3"
+                            label="Option 3"
+                        />
+                    </RadioGroup>
+
+                    {/* Required + disabled */}
+                    <RadioGroup
+                        id="radio-required-disabled"
+                        name="radio-required-disabled"
+                        label="Required disabled options"
+                        description="This required group is disabled"
+                        value={requiredRadio}
+                        isRequired
+                        isDisabled
+                        onChange={(value?: string) => setRequiredRadio(value)}
+                    >
+                        <RadioField
+                            value="option-1"
+                            label="Option 1"
+                            isDisabled
+                        />
+                        <RadioField
+                            value="option-2"
+                            label="Option 2"
+                            isDisabled
+                        />
+                        <RadioField
+                            value="option-3"
+                            label="Option 3"
+                            isDisabled
+                        />
+                    </RadioGroup>
+
                     {/* Horizontal */}
                     <RadioGroup
                         id="radio-horizontal"
@@ -220,6 +281,30 @@ export const SandboxRadioGroup = () => {
                         <RadioField
                             value="option-3"
                             label="Option 3"
+                        />
+                    </RadioGroup>
+
+                    {/* Tooltip */}
+                    <RadioGroup
+                        id="radio-tooltip"
+                        name="radio-tooltip"
+                        label="Notification preference"
+                        description="Choose how you want to be notified"
+                        tooltip="You can change your notification preference later"
+                        value={tooltipRadio}
+                        onChange={(value?: string) => setTooltipRadio(value)}
+                    >
+                        <RadioField
+                            value="option-1"
+                            label="Email"
+                        />
+                        <RadioField
+                            value="option-2"
+                            label="SMS"
+                        />
+                        <RadioField
+                            value="option-3"
+                            label="Push"
                         />
                     </RadioGroup>
 
@@ -271,14 +356,131 @@ export const SandboxRadioGroup = () => {
                         </RadioField>
                     </RadioGroup>
 
-                    {/* Full width */}
+                    {/* No label */}
                     <RadioGroup
-                        id="radio-full-width"
-                        name="radio-full-width"
-                        label="Full width options"
-                        description="This group uses the full available width"
+                        id="radio-no-label"
+                        name="radio-no-label"
+                        ariaLabel="Radio options"
+                        description="Radio group without a visible label"
+                        value={noLabelRadio}
+                        onChange={(value?: string) => setNoLabelRadio(value)}
+                    >
+                        <RadioField
+                            value="option-1"
+                            label="Option 1"
+                        />
+                        <RadioField
+                            value="option-2"
+                            label="Option 2"
+                        />
+                        <RadioField
+                            value="option-3"
+                            label="Option 3"
+                        />
+                    </RadioGroup>
+
+                    {/* No label or description */}
+                    <RadioGroup
+                        id="radio-no-label-no-description"
+                        name="radio-no-label-no-description"
+                        ariaLabel="Radio options without visible label"
+                        value={noLabelRadio}
+                        onChange={(value?: string) => setNoLabelRadio(value)}
+                    >
+                        <RadioField
+                            value="option-1"
+                            label="Option 1"
+                        />
+                        <RadioField
+                            value="option-2"
+                            label="Option 2"
+                        />
+                        <RadioField
+                            value="option-3"
+                            label="Option 3"
+                        />
+                    </RadioGroup>
+
+                    {/* Radio field without label */}
+                    <RadioGroup
+                        id="radio-field-no-label"
+                        name="radio-field-no-label"
+                        label="Unnamed choices"
+                        description="Individual radio fields without visible labels"
                         value={basicRadio}
                         onChange={(value?: string) => setBasicRadio(value)}
+                    >
+                        <RadioField
+                            value="option-1"
+                            ariaLabel="First option"
+                        />
+                        <RadioField
+                            value="option-2"
+                            ariaLabel="Second option"
+                        />
+                        <RadioField
+                            value="option-3"
+                            ariaLabel="Third option"
+                        />
+                    </RadioGroup>
+
+                    {/* Individual disabled radio fields */}
+                    <RadioGroup
+                        id="radio-individual-disabled"
+                        name="radio-individual-disabled"
+                        label="Individual disabled options"
+                        description="Only the second option is disabled"
+                        value={basicRadio}
+                        onChange={(value?: string) => setBasicRadio(value)}
+                    >
+                        <RadioField
+                            value="option-1"
+                            label="Option 1"
+                        />
+                        <RadioField
+                            value="option-2"
+                            label="Option 2"
+                            isDisabled
+                        />
+                        <RadioField
+                            value="option-3"
+                            label="Option 3"
+                        />
+                    </RadioGroup>
+
+                    {/* Secondary variant */}
+                    <RadioGroup
+                        id="radio-secondary"
+                        name="radio-secondary"
+                        label="Secondary options"
+                        description="Radio group using the secondary variant"
+                        value={basicRadio}
+                        variant="secondary"
+                        onChange={(value?: string) => setBasicRadio(value)}
+                    >
+                        <RadioField
+                            value="option-1"
+                            label="Option 1"
+                        />
+                        <RadioField
+                            value="option-2"
+                            label="Option 2"
+                        />
+                        <RadioField
+                            value="option-3"
+                            label="Option 3"
+                        />
+                    </RadioGroup>
+
+                    {/* Custom class */}
+                    <RadioGroup
+                        id="radio-custom-class"
+                        name="radio-custom-class"
+                        label="Custom styled options"
+                        description="This group has a custom className"
+                        value={customClassRadio}
+                        className="max-w-sm"
+                        onChange={(value?: string) => setCustomClassRadio(value)}
                     >
                         <RadioField
                             value="option-1"

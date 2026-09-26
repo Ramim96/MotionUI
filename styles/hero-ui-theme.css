@@ -57,6 +57,9 @@
     --warning: var(--color-warning-light);
     --warning-foreground: var(--color-warning-dark);
 
+    --tooltip: var(--color-neutral-900);
+    --tooltip-text: var(--color-neutral-100);
+
     --font-sans: var(--font-manrope);
 
     --field-radius: 0.3rem;
@@ -117,6 +120,11 @@
 
     --warning: var(--color-warning);
     --warning-foreground: var(--color-warning-darker);
+
+    --tooltip: var(--color-neutral-100);
+    --tooltip-text: var(--color-neutral-900);
+
+    --font-sans: var(--font-manrope);
 
     --field-radius: 0.3rem;
 

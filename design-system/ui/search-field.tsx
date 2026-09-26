@@ -6,6 +6,7 @@ import {
 } from "@heroui/react";
 // Components
 import { Description } from "@design-system/ui/typography";
+import { Info } from "./tooltip";
 // Interfaces
 import {
     FieldBaseComponentProps,
@@ -14,9 +15,9 @@ import {
     FieldStyleComponentProps,
     FieldValidationComponentProps,
     FieldValueComponentProps
-} from "../../interfaces/input-field";
+} from "../../interfaces/components/input-field";
 // Utils
-import { cn } from "@lib/utils/css";
+import { cn } from "@lib/utils/css-utils";
 
 interface SearchFieldComponentProps extends
     Omit<FieldBaseComponentProps, "type">,
@@ -35,6 +36,7 @@ export const SearchField = ({
     ariaLabel,
     description,
     placeholder = "Search...",
+    tooltip,
     // FieldValueComponentProps
     value,
     // FieldStatusComponentProps
@@ -68,7 +70,20 @@ export const SearchField = ({
         >
             {
                 label &&
-                    <Label htmlFor={id}>{label}</Label>
+                    <div className={cn("flex justify-between items-center")}>
+                        <Label
+                            htmlFor={id}
+                            isDisabled={isDisabled}
+                            isRequired={isRequired}
+                            isInvalid={isInvalid}
+                        >
+                            {label}
+                        </Label>
+                        {
+                            tooltip &&
+                                <Info tooltipContent={tooltip} />
+                        }
+                    </div>
             }
             <HeroSearchField.Group>
                 <HeroSearchField.SearchIcon />

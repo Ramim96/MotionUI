@@ -6,6 +6,7 @@ import {
 } from "@heroui/react";
 // Components
 import { Description } from "@design-system/ui/typography";
+import { Info } from "./tooltip";
 // Interface
 import {
     FieldBaseComponentProps,
@@ -15,10 +16,10 @@ import {
     FieldStyleComponentProps,
     FieldValidationComponentProps,
     FieldValueComponentProps
-} from "../../interfaces/input-field";
+} from "../../interfaces/components/input-field";
 import { ChangeEvent } from "react";
 // Utils
-import { cn } from "@lib/utils/css";
+import { cn } from "@lib/utils/css-utils";
 
 interface InputGroupComponentProps extends
     FieldBaseComponentProps,
@@ -39,6 +40,7 @@ export const InputGroup = ({
     ariaLabel,
     description,
     placeholder,
+    tooltip,
     // FieldValueComponentProps
     value,
     // FieldStatusComponentProps
@@ -76,7 +78,20 @@ export const InputGroup = ({
         >
             {
                 label &&
-                    <Label htmlFor={id}>{label}</Label>
+                    <div className={cn("flex justify-between items-center")}>
+                        <Label
+                            htmlFor={id}
+                            isDisabled={isDisabled}
+                            isRequired={isRequired}
+                            isInvalid={isInvalid}
+                        >
+                            {label}
+                        </Label>
+                        {
+                            tooltip &&
+                                <Info tooltipContent={tooltip} />
+                        }
+                    </div>
             }
             <HeroInputGroup variant={variant} fullWidth={fullWidth}>
                 {

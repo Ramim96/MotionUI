@@ -4,7 +4,7 @@ import { useState } from "react";
 // Components
 import { PasswordField } from "@design-system/ui/password-field";
 // Utils
-import { cn } from "../lib/utils/css";
+import { cn } from "../lib/utils/css-utils";
 
 export const SandboxPasswordField = () => {
 
@@ -12,6 +12,8 @@ export const SandboxPasswordField = () => {
     const [emptyPassword, setEmptyPassword] = useState<string | undefined>("");
     const [requiredPassword, setRequiredPassword] = useState<string | undefined>("");
     const [invalidPassword, setInvalidPassword] = useState<string | undefined>("password123");
+    const [requiredInvalidPassword, setRequiredInvalidPassword] = useState<string | undefined>("");
+    const [customPassword, setCustomPassword] = useState<string | undefined>("password123");
 
     return (
         <div
@@ -44,6 +46,7 @@ export const SandboxPasswordField = () => {
                         label="Empty password"
                         description="No password entered"
                         value={emptyPassword}
+                        placeholder="Enter password"
                         onChange={(value) => setEmptyPassword(value)}
                     />
 
@@ -85,6 +88,7 @@ export const SandboxPasswordField = () => {
                         id="password-invalid"
                         name="password-invalid"
                         label="Invalid password"
+                        description="This password is invalid"
                         value={invalidPassword}
                         isInvalid
                         onChange={(value) => setInvalidPassword(value)}
@@ -102,12 +106,63 @@ export const SandboxPasswordField = () => {
                         onChange={(value) => setInvalidPassword(value)}
                     />
 
+                    {/* Required + invalid */}
+                    <PasswordField
+                        id="password-required-invalid"
+                        name="password-required-invalid"
+                        label="Required invalid password"
+                        description="A valid password is required"
+                        value={requiredInvalidPassword}
+                        isRequired
+                        isInvalid
+                        fieldError="Please enter your password"
+                        onChange={(value) => setRequiredInvalidPassword(value)}
+                    />
+
+                    {/* Disabled + required */}
+                    <PasswordField
+                        id="password-disabled-required"
+                        name="password-disabled-required"
+                        label="Disabled required password"
+                        description="This required password field is disabled"
+                        value="password123"
+                        isDisabled
+                        isRequired
+                        onChange={() => {}}
+                    />
+
+                    {/* Read only + required */}
+                    <PasswordField
+                        id="password-readonly-required"
+                        name="password-readonly-required"
+                        label="Read-only required password"
+                        description="This required password field is read-only"
+                        value="password123"
+                        isReadOnly
+                        isRequired
+                        onChange={() => {}}
+                    />
+
+                    {/* Disabled + invalid */}
+                    <PasswordField
+                        id="password-disabled-invalid"
+                        name="password-disabled-invalid"
+                        label="Disabled invalid password"
+                        description="This password is disabled and invalid"
+                        value="password123"
+                        isDisabled
+                        isInvalid
+                        fieldError="This password is invalid"
+                        onChange={() => {}}
+                    />
+
                     {/* No label */}
                     <PasswordField
                         id="password-no-label"
                         name="password-no-label"
-                        description="Password field without a label"
-                        ariaLabel="no-label"
+                        description="Password field without a visible label"
+                        ariaLabel="Password"
+                        placeholder="Enter password"
                         value={password}
                         onChange={(value) => setPassword(value)}
                     />
@@ -116,7 +171,8 @@ export const SandboxPasswordField = () => {
                     <PasswordField
                         id="password-no-label-no-description"
                         name="password-no-label-no-description"
-                        ariaLabel="no-label-no-description"
+                        ariaLabel="Password without visible label"
+                        placeholder="Enter password"
                         value={password}
                         onChange={(value) => setPassword(value)}
                     />
@@ -127,9 +183,57 @@ export const SandboxPasswordField = () => {
                         name="password-full-width"
                         label="Full width password"
                         description="This field uses the full available width"
+                        placeholder="Enter password"
                         value={password}
                         fullWidth
                         onChange={(value) => setPassword(value)}
+                    />
+
+                    {/* Custom aria-label */}
+                    <PasswordField
+                        id="password-aria-label"
+                        name="password-aria-label"
+                        ariaLabel="Account password"
+                        label="Password"
+                        description="Custom accessible name"
+                        value={password}
+                        onChange={(value) => setPassword(value)}
+                    />
+
+                    {/* Tooltip */}
+                    <PasswordField
+                        id="password-tooltip"
+                        name="password-tooltip"
+                        label="Password"
+                        description="Choose a secure password"
+                        tooltip="Use a combination of letters, numbers, and special characters"
+                        placeholder="Enter password"
+                        value={password}
+                        onChange={(value) => setPassword(value)}
+                    />
+
+                    {/* Secondary variant */}
+                    <PasswordField
+                        id="password-secondary"
+                        name="password-secondary"
+                        label="Secondary password"
+                        description="Password field using the secondary variant"
+                        placeholder="Enter password"
+                        value={password}
+                        variant="secondary"
+                        onChange={(value) => setPassword(value)}
+                    />
+
+                    {/* Custom class */}
+                    <PasswordField
+                        id="password-custom-class"
+                        name="password-custom-class"
+                        label="Custom styled password"
+                        description="This field has a custom className"
+                        placeholder="Enter password"
+                        value={customPassword}
+                        className="max-w-sm"
+                        onChange={(value) => setCustomPassword(value)}
                     />
 
                 </div>

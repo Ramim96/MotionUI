@@ -4,7 +4,7 @@ import { useState } from "react";
 // Components
 import { NumberField } from "@design-system/ui/number-field";
 // Utils
-import { cn } from "../lib/utils/css";
+import { cn } from "../lib/utils/css-utils";
 
 export const SandboxNumberField = () => {
 
@@ -88,6 +88,7 @@ export const SandboxNumberField = () => {
                         id="number-invalid"
                         name="number-invalid"
                         label="Invalid number"
+                        description="This number is invalid"
                         value={invalidNumber}
                         isInvalid
                         onChange={(value) => setInvalidNumber(value)}
@@ -103,6 +104,56 @@ export const SandboxNumberField = () => {
                         isInvalid
                         fieldError="Please enter a valid number"
                         onChange={(value) => setInvalidNumber(value)}
+                    />
+
+                    {/* Required + invalid */}
+                    <NumberField
+                        id="number-required-invalid"
+                        name="number-required-invalid"
+                        label="Required invalid number"
+                        description="A valid number is required"
+                        value={emptyNumber}
+                        isRequired
+                        isInvalid
+                        fieldError="Please enter a number"
+                        onChange={(value) => setEmptyNumber(value)}
+                    />
+
+                    {/* Disabled + required */}
+                    <NumberField
+                        id="number-disabled-required"
+                        name="number-disabled-required"
+                        label="Disabled required number"
+                        description="This required field is disabled"
+                        value={10}
+                        isDisabled
+                        isRequired
+                        onChange={() => {}}
+                    />
+
+                    {/* Read only + required */}
+                    <NumberField
+                        id="number-readonly-required"
+                        name="number-readonly-required"
+                        label="Read-only required number"
+                        description="This required field is read-only"
+                        value={10}
+                        isReadOnly
+                        isRequired
+                        onChange={() => {}}
+                    />
+
+                    {/* Disabled + invalid */}
+                    <NumberField
+                        id="number-disabled-invalid"
+                        name="number-disabled-invalid"
+                        label="Disabled invalid number"
+                        description="This number is disabled and invalid"
+                        value={invalidNumber}
+                        isDisabled
+                        isInvalid
+                        fieldError="This number is invalid"
+                        onChange={() => {}}
                     />
 
                     {/* Min / max */}
@@ -128,6 +179,19 @@ export const SandboxNumberField = () => {
                         onChange={(value) => setStepNumber(value)}
                     />
 
+                    {/* Min / max + step */}
+                    <NumberField
+                        id="number-range-step"
+                        name="number-range-step"
+                        label="Range with step"
+                        description="Allowed range: 0–100, increments by 10"
+                        value={stepNumber}
+                        minValue={0}
+                        maxValue={100}
+                        step={10}
+                        onChange={(value) => setStepNumber(value)}
+                    />
+
                     {/* Format options */}
                     <NumberField
                         id="number-currency"
@@ -142,12 +206,25 @@ export const SandboxNumberField = () => {
                         onChange={(value) => setCurrencyNumber(value)}
                     />
 
+                    {/* Percentage format */}
+                    <NumberField
+                        id="number-percentage"
+                        name="number-percentage"
+                        label="Percentage"
+                        description="Percentage formatting"
+                        value={number}
+                        formatOptions={{
+                            style: "percent",
+                        }}
+                        onChange={(value) => setNumber(value)}
+                    />
+
                     {/* No label */}
                     <NumberField
                         id="number-no-label"
                         name="number-no-label"
                         description="Number field without a label"
-                        ariaLabel="no-label"
+                        ariaLabel="Number"
                         value={number}
                         onChange={(value) => setNumber(value)}
                     />
@@ -156,7 +233,7 @@ export const SandboxNumberField = () => {
                     <NumberField
                         id="number-no-label-no-description"
                         name="number-no-label-no-description"
-                        ariaLabel="no-label-no-description"
+                        ariaLabel="Number without label"
                         value={number}
                         onChange={(value) => setNumber(value)}
                     />
@@ -180,6 +257,39 @@ export const SandboxNumberField = () => {
                         label="Quantity"
                         description="Custom accessible name"
                         value={number}
+                        onChange={(value) => setNumber(value)}
+                    />
+
+                    {/* Tooltip */}
+                    <NumberField
+                        id="number-tooltip"
+                        name="number-tooltip"
+                        label="Quantity"
+                        description="Specify the quantity"
+                        tooltip="Use the increment and decrement controls or enter a value directly"
+                        value={number}
+                        onChange={(value) => setNumber(value)}
+                    />
+
+                    {/* Secondary variant */}
+                    <NumberField
+                        id="number-secondary"
+                        name="number-secondary"
+                        label="Secondary number"
+                        description="Number field using the secondary variant"
+                        value={number}
+                        variant="secondary"
+                        onChange={(value) => setNumber(value)}
+                    />
+
+                    {/* Custom class */}
+                    <NumberField
+                        id="number-custom-class"
+                        name="number-custom-class"
+                        label="Custom styled number"
+                        description="This field has a custom className"
+                        value={number}
+                        className="max-w-sm"
                         onChange={(value) => setNumber(value)}
                     />
 

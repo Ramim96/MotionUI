@@ -2,13 +2,13 @@
 
 // Components
 import { Header } from "./header";
-import { Footer } from "./footer";
 // Contexts
 import { AppUserContextProvider } from "@contexts/app-user-context";
 // Hooks
 import { useAppUserContext } from "@hooks/use-app-user-context";
 // Utils
-import { cn } from "@lib/utils/css";
+import { cn } from "@lib/utils/css-utils";
+import { Footer } from "./footer";
 
 // #region App root
 
