@@ -5,7 +5,7 @@ import { SandboxSwitch } from "@sandbox/sandbox-switch";
 import { SandboxInput } from "@sandbox/sandbox-input";
 import { SandboxForm } from "@sandbox/sandbox-form";
 // Utils
-import { cn } from "../../lib/utils/css";
+import { cn } from "../../lib/utils/css-utils";
 
 export const SandboxRoot = () => {
 

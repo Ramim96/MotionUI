@@ -13,9 +13,11 @@ import {
     FieldStyleComponentProps,
     FieldValidationComponentProps,
     FieldValueComponentProps
-} from "../../interfaces/input-field";
+} from "../../interfaces/components/input-field";
+// Components
+import { Info } from "./tooltip";
 // Utils
-import { cn } from "@lib/utils/css";
+import { cn } from "@lib/utils/css-utils";
 
 export type CheckboxSizeType = 4 | 5 | 6;
 
@@ -46,6 +48,7 @@ export const Checkbox = ({
     label,
     ariaLabel,
     description,
+    tooltip,
     // FieldValueComponentProps
     value,
     // FieldStatusComponentProps
@@ -85,7 +88,23 @@ export const Checkbox = ({
                 </HeroCheckbox.Control>
                 {
                     label &&
-                        <Label htmlFor={id}>{label}</Label>
+                        <div className={cn("flex justify-between items-center")}>
+                            <Label
+                                htmlFor={id}
+                                isDisabled={isDisabled}
+                                isRequired={isRequired}
+                                isInvalid={isInvalid}
+                            >
+                                {label}
+                            </Label>
+                            {
+                                tooltip &&
+                                    <Info
+                                        tooltipContent={tooltip}
+                                        triggerClassName={cn("ml-2")}
+                                    />
+                            }
+                        </div>
                 }
             </HeroCheckbox.Content>
             {

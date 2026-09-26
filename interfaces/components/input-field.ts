@@ -1,4 +1,4 @@
-import { TextFieldType, VariantType } from "../types/input-field";
+import { TextFieldType, VariantType } from "../../types/components/input-field";
 
 export interface FieldBaseComponentProps {
     type?: TextFieldType;
@@ -9,6 +9,7 @@ export interface FieldBaseComponentProps {
     ariaLabel?: string;
     description?: string;
     placeholder?: string;
+    tooltip?: React.ReactNode;
 };
 
 export interface FieldValueComponentProps<T> {

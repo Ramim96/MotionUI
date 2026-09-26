@@ -1,13 +1,13 @@
 "use client";
 
 // Components
-import { ThemeSwitch } from "@design-system/common/theme-switch";
+import { ThemeSwitch } from "@design-system/ui/theme-switch";
 // Contexts
 import { AppUserContextProvider } from "@contexts/app-user-context";
 // Hooks
 import { useAppUserContext } from "@hooks/use-app-user-context";
 // Utils
-import { cn } from "../../lib/utils/css";
+import { cn } from "../../lib/utils/css-utils";
 
 interface SandboxContainerComponentProps {
     children: React.ReactNode;

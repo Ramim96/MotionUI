@@ -2,7 +2,7 @@
 import { Button, IconButton, Link } from "@design-system/ui/buttons";
 import { IconVariant } from "@design-system/icons/icon-variants";
 // Utils
-import { cn } from "../lib/utils/css";
+import { cn } from "../lib/utils/css-utils";
 
 export const SandboxButton = () => {
 

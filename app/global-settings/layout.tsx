@@ -6,7 +6,7 @@ import { GlobalSettingsRouteOptions } from "@routes/global-settings-route-option
 //Styles
 import "@styles/globals.css"
 // Utils
-import { cn } from "@lib/utils/css";
+import { cn } from "@lib/utils/css-utils";
 
 export const metadata: Metadata = {
   title: {

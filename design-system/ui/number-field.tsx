@@ -5,6 +5,7 @@ import {
 } from "@heroui/react";
 // Components
 import { Description } from "@design-system/ui/typography";
+import { Info } from "./tooltip";
 // Interface
 import {
     FieldBaseComponentProps,
@@ -13,9 +14,9 @@ import {
     FieldStyleComponentProps,
     FieldValidationComponentProps,
     FieldValueComponentProps
-} from "../../interfaces/input-field";
+} from "../../interfaces/components/input-field";
 // Utils
-import { cn } from "@lib/utils/css";
+import { cn } from "@lib/utils/css-utils";
 
 interface InputGroupComponentProps extends
     Omit<FieldBaseComponentProps, "type" | "placeholder">,
@@ -42,6 +43,7 @@ export const NumberField = ({
     label,
     ariaLabel,
     description,
+    tooltip,
     // FieldValueComponentProps
     value,
     // FieldStatusComponentProps
@@ -85,7 +87,20 @@ export const NumberField = ({
         >
             {
                 label &&
-                    <Label htmlFor={id}>{label}</Label>
+                    <div className={cn("flex justify-between items-center")}>
+                        <Label
+                            htmlFor={id}
+                            isDisabled={isDisabled}
+                            isRequired={isRequired}
+                            isInvalid={isInvalid}
+                        >
+                            {label}
+                        </Label>
+                        {
+                            tooltip &&
+                                <Info tooltipContent={tooltip} />
+                        }
+                    </div>
             }
             <HeroNumberField.Group>
                 <HeroNumberField.DecrementButton />
@@ -103,5 +118,3 @@ export const NumberField = ({
         </HeroNumberField>
     );
 };
-
-// #endregion TextArea

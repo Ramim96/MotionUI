@@ -20,11 +20,10 @@ import {
     FieldBaseComponentProps,
     FieldStatusComponentProps,
     FieldStyleComponentProps
-} from "../../interfaces/input-field";
+} from "../../interfaces/components/input-field";
 // Types
-import { InputType } from "../../types/form-input-field";
+import { InputType } from "../../types/components/form-input-field";
 // Utils
-import { cn } from "@lib/utils/css";
 import { DateValue, Orientation } from "@heroui/react";
 
 interface FormInputFieldComponentProps extends
@@ -43,21 +42,8 @@ interface FormInputFieldComponentProps extends
 };
 
 export const FormInputField = ({
-    // FieldBaseComponentProps
     id,
     name,
-    variant = "primary",
-    label,
-    description,
-    placeholder,
-    // FieldStatusComponentProps
-    isDisabled,
-    isReadOnly,
-    isRequired,
-    // FieldStyleComponentProps
-    fullWidth,
-    className,
-    // Additional
     type,
     children,
     size,
@@ -67,6 +53,8 @@ export const FormInputField = ({
     orientation,
     formatOptions,
     ariaLabel,
+    // FieldBaseComponentProps, FieldStatusComponentProps, FieldStyleComponentProps
+    ...props
 }: FormInputFieldComponentProps) => {
     
     // Hooks
@@ -79,18 +67,12 @@ export const FormInputField = ({
                 <Checkbox
                     id={id}
                     name={name}
-                    variant={variant}
-                    label={label}
-                    description={description}
+                    size={size}
                     value={getFieldValue(name) as boolean}
-                    isDisabled={isDisabled}
-                    isReadOnly={isReadOnly}
-                    isRequired={isRequired}
                     isInvalid={getFieldValidationError(name) !== undefined}
                     fieldError={getFieldValidationError(name)}
-                    className={cn(className)}
-                    size={size}
                     onChange={(value: boolean) => setFieldValue(name, value)}
+                    {...props}
                 />
         }
         {
@@ -98,17 +80,11 @@ export const FormInputField = ({
                 <DateField
                     id={id}
                     name={name}
-                    label={label}
-                    description={description}
                     value={getFieldValue(name) as DateValue ?? null}
-                    isDisabled={isDisabled}
-                    isReadOnly={isReadOnly}
-                    isRequired={isRequired}
                     isInvalid={getFieldValidationError(name) !== undefined}
                     fieldError={getFieldValidationError(name)}
-                    fullWidth={fullWidth}
-                    className={cn(className)}
                     onChange={(value: DateValue | null) => setFieldValue(name, value)}
+                    {...props}
                 />
         }
         {
@@ -116,19 +92,11 @@ export const FormInputField = ({
                 <EmailField
                     id={id}
                     name={name}
-                    variant={variant}
-                    label={label}
-                    description={description}
-                    placeholder={placeholder}
                     value={getFieldValue(name) as string | undefined}
-                    isDisabled={isDisabled}
-                    isReadOnly={isReadOnly}
-                    isRequired={isRequired}
                     isInvalid={getFieldValidationError(name) !== undefined}
                     fieldError={getFieldValidationError(name)}
-                    fullWidth={fullWidth}
-                    className={cn(className)}
                     onChange={(value?: string) => setFieldValue(name, value)}
+                    {...props}
                 />
         }
         {
@@ -136,13 +104,7 @@ export const FormInputField = ({
                 <NumberField
                     id={id}
                     name={name}
-                    variant={variant}
-                    label={label}
-                    description={description}
                     value={getFieldValue(name) as number | undefined}
-                    isDisabled={isDisabled}
-                    isReadOnly={isReadOnly}
-                    isRequired={isRequired}
                     isInvalid={getFieldValidationError(name) !== undefined}
                     fieldError={getFieldValidationError(name)}
                     minValue={minValue}
@@ -150,9 +112,8 @@ export const FormInputField = ({
                     step={step}
                     formatOptions={formatOptions}
                     aria-label={ariaLabel}
-                    fullWidth={fullWidth}
-                    className={cn(className)}
                     onChange={(value?: number) => setFieldValue(name, value)}
+                    {...props}
                 />
         }
         {
@@ -160,19 +121,11 @@ export const FormInputField = ({
                 <PasswordField
                     id={id}
                     name={name}
-                    variant={variant}
-                    label={label}
-                    description={description}
-                    placeholder={placeholder}
                     value={getFieldValue(name) as string | undefined}
-                    isDisabled={isDisabled}
-                    isReadOnly={isReadOnly}
-                    isRequired={isRequired}
                     isInvalid={getFieldValidationError(name) !== undefined}
                     fieldError={getFieldValidationError(name)}
-                    fullWidth={fullWidth}
-                    className={cn(className)}
                     onChange={(value?: string) => setFieldValue(name, value)}
+                    {...props}
                 />
         }
         {
@@ -180,18 +133,12 @@ export const FormInputField = ({
                 <RadioGroup
                     id={id}
                     name={name}
-                    variant={variant}
-                    label={label}
-                    description={description}
                     value={getFieldValue(name) as string | undefined}
-                    isDisabled={isDisabled}
-                    isReadOnly={isReadOnly}
-                    isRequired={isRequired}
                     isInvalid={getFieldValidationError(name) !== undefined}
                     fieldError={getFieldValidationError(name)}
-                    className={cn(className)}
                     orientation={orientation}
                     onChange={(value?: string) => setFieldValue(name, value)}
+                    {...props}
                 >
                     {children}
                 </RadioGroup>
@@ -201,19 +148,11 @@ export const FormInputField = ({
                 <SearchField
                     id={id}
                     name={name}
-                    variant={variant}
-                    label={label}
-                    description={description}
-                    placeholder={placeholder}
                     value={getFieldValue(name) as string | undefined}
-                    isDisabled={isDisabled}
-                    isReadOnly={isReadOnly}
-                    isRequired={isRequired}
                     isInvalid={getFieldValidationError(name) !== undefined}
                     fieldError={getFieldValidationError(name)}
-                    fullWidth={fullWidth}
-                    className={cn(className)}
                     onChange={(value?: string) => setFieldValue(name, value)}
+                    {...props}
                 />
         }
         {
@@ -221,16 +160,11 @@ export const FormInputField = ({
                 <Switch
                     id={id}
                     name={name}
-                    label={label}
-                    description={description}
                     isSelected={getFieldValue(name) as boolean}
-                    isDisabled={isDisabled}
-                    isReadOnly={isReadOnly}
-                    isRequired={isRequired}
                     isInvalid={getFieldValidationError(name) !== undefined}
                     fieldError={getFieldValidationError(name)}
-                    className={cn(className)}
                     onChange={(value: boolean) => setFieldValue(name, value)}
+                    {...props}
                 />
         }
         {
@@ -238,19 +172,11 @@ export const FormInputField = ({
                 <TelField
                     id={id}
                     name={name}
-                    variant={variant}
-                    label={label}
-                    description={description}
-                    placeholder={placeholder}
                     value={getFieldValue(name) as string | undefined}
-                    isDisabled={isDisabled}
-                    isReadOnly={isReadOnly}
-                    isRequired={isRequired}
                     isInvalid={getFieldValidationError(name) !== undefined}
                     fieldError={getFieldValidationError(name)}
-                    fullWidth={fullWidth}
-                    className={cn(className)}
                     onChange={(value?: string) => setFieldValue(name, value)}
+                    {...props}
                 />
         }
         {
@@ -258,19 +184,11 @@ export const FormInputField = ({
                 <TextField
                     id={id}
                     name={name}
-                    variant={variant}
-                    label={label}
-                    description={description}
-                    placeholder={placeholder}
                     value={getFieldValue(name) as string | undefined}
-                    isDisabled={isDisabled}
-                    isReadOnly={isReadOnly}
-                    isRequired={isRequired}
                     isInvalid={getFieldValidationError(name) !== undefined}
                     fieldError={getFieldValidationError(name)}
-                    fullWidth={fullWidth}
-                    className={cn(className)}
                     onChange={(value?: string) => setFieldValue(name, value)}
+                    {...props}
                 />
         }
         {
@@ -278,19 +196,11 @@ export const FormInputField = ({
                 <TextareaField
                     id={id}
                     name={name}
-                    variant={variant}
-                    label={label}
-                    description={description}
-                    placeholder={placeholder}
                     value={getFieldValue(name) as string | undefined}
-                    isDisabled={isDisabled}
-                    isReadOnly={isReadOnly}
-                    isRequired={isRequired}
                     isInvalid={getFieldValidationError(name) !== undefined}
                     fieldError={getFieldValidationError(name)}
-                    fullWidth={fullWidth}
-                    className={cn(className)}
                     onChange={(value?: string) => setFieldValue(name, value)}
+                    {...props}
                 />
         }
         {
@@ -298,19 +208,11 @@ export const FormInputField = ({
                 <UrlField
                     id={id}
                     name={name}
-                    variant={variant}
-                    label={label}
-                    description={description}
-                    placeholder={placeholder}
                     value={getFieldValue(name) as string | undefined}
-                    isDisabled={isDisabled}
-                    isReadOnly={isReadOnly}
-                    isRequired={isRequired}
                     isInvalid={getFieldValidationError(name) !== undefined}
                     fieldError={getFieldValidationError(name)}
-                    fullWidth={fullWidth}
-                    className={cn(className)}
                     onChange={(value?: string) => setFieldValue(name, value)}
+                    {...props}
                 />
         }
         </div>

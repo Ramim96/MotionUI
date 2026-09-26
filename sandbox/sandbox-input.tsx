@@ -5,13 +5,12 @@ import { SandboxEmailField } from "./sandobox-email-field";
 import { SandboxNumberField } from "./sandbox-number";
 import { SandboxPasswordField } from "./sandbox-password";
 import { SandboxRadioGroup } from "./sandbox-radio-field";
-import { SandboxSlider } from "./sandbox-slider";
 import { SandboxTelField } from "./sandbox-tel";
 import { SandboxTextField } from "./sandbox-text";
 import { SandboxTextArea } from "./sandbox-textarea";
 import { SandboxUrlField } from "./sandbox-url";
 // Utils
-import { cn } from "../lib/utils/css";
+import { cn } from "../lib/utils/css-utils";
 
 export const SandboxInput = () => {
 
@@ -23,17 +22,16 @@ export const SandboxInput = () => {
             )}
         >
             <div className={cn("flex flex-col gap-y-5")}>
-                <SandboxCheckbox />
-                <SandboxDateField />
-                <SandboxEmailField />
-                <SandboxNumberField />
-                <SandboxPasswordField />
-                <SandboxRadioGroup />
-                <SandboxTelField />
-                <SandboxTextField />
-                <SandboxUrlField />
+                {/* <SandboxCheckbox /> */}
+                {/* <SandboxDateField /> */}
+                {/* <SandboxEmailField /> */}
+                {/* <SandboxNumberField /> */}
+                {/* <SandboxPasswordField /> */}
+                {/* <SandboxRadioGroup /> */}
+                {/* <SandboxTelField /> */}
+                {/* <SandboxTextField /> */}
+                {/* <SandboxUrlField /> */}
                 <SandboxTextArea />
-                <SandboxSlider />
             </div>
         </div>
     );

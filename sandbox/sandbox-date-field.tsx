@@ -5,36 +5,117 @@ import { CalendarDate } from "@internationalized/date";
 // Components
 import { DateField } from "@design-system/ui/date-field";
 // Utils
-import { cn } from "../lib/utils/css";
+import { cn } from "../lib/utils/css-utils";
 import { DateValue } from "@heroui/react";
 
 export const SandboxDateField = () => {
 
-    const [selectedDate, setSelectedDate] = useState<DateValue | null>(
+    // #region Basic / individual states
+
+    const [defaultDate, setDefaultDate] = useState<DateValue | null>(
         new CalendarDate(2026, 9, 19)
     );
 
-    const [selectedRequiredDate, setSelectedRequiredDate] = useState<DateValue | null>(null);
+    const [emptyDate, setEmptyDate] = useState<DateValue | null>(null);
 
-    const [selectedInvalidDate, setSelectedInvalidDate] = useState<DateValue | null>(null);
-
-    const [selectedDisabledDate, setSelectedDisabledDate] = useState<DateValue | null>(
+    const [disabledDate, setDisabledDate] = useState<DateValue | null>(
         new CalendarDate(2026, 9, 19)
     );
+
+    const [readOnlyDate, setReadOnlyDate] = useState<DateValue | null>(
+        new CalendarDate(2026, 9, 19)
+    );
+
+    const [requiredDate, setRequiredDate] = useState<DateValue | null>(null);
+
+    // #endregion
+
+
+    // #region Validation states
+
+    const [invalidDate, setInvalidDate] = useState<DateValue | null>(null);
+
+    const [invalidErrorDate, setInvalidErrorDate] =
+        useState<DateValue | null>(null);
+
+    const [invalidRequiredDate, setInvalidRequiredDate] =
+        useState<DateValue | null>(null);
+
+    // #endregion
+
+
+    // #region Accessibility / styling states
+
+    const [noLabelDate, setNoLabelDate] = useState<DateValue | null>(
+        new CalendarDate(2026, 9, 19)
+    );
+
+    const [noLabelNoDescriptionDate, setNoLabelNoDescriptionDate] =
+        useState<DateValue | null>(
+            new CalendarDate(2026, 9, 19)
+        );
+
+    const [fullWidthDate, setFullWidthDate] = useState<DateValue | null>(
+        new CalendarDate(2026, 9, 19)
+    );
+
+    const [ariaLabelDate, setAriaLabelDate] = useState<DateValue | null>(
+        new CalendarDate(2026, 9, 19)
+    );
+
+    const [tooltipDate, setTooltipDate] = useState<DateValue | null>(
+        new CalendarDate(2026, 9, 19)
+    );
+
+    const [customClassDate, setCustomClassDate] = useState<DateValue | null>(
+        new CalendarDate(2026, 9, 19)
+    );
+
+    // #endregion
+
+
+    // #region Combined states
+
+    const [disabledRequiredDate, setDisabledRequiredDate] =
+        useState<DateValue | null>(
+            new CalendarDate(2026, 9, 19)
+        );
+
+    const [readOnlyRequiredDate, setReadOnlyRequiredDate] =
+        useState<DateValue | null>(
+            new CalendarDate(2026, 9, 19)
+        );
+
+    const [disabledInvalidDate, setDisabledInvalidDate] =
+        useState<DateValue | null>(
+            new CalendarDate(2026, 9, 19)
+        );
+
+    const [requiredInvalidErrorDate, setRequiredInvalidErrorDate] =
+        useState<DateValue | null>(null);
+
+    // #endregion
+
 
     return (
         <div
             className={cn(
-                "flex flex-col justify-center items-center gap-x-3 gap-y-8 p-2",
+                "flex flex-col justify-center items-center",
+                "gap-x-3 gap-y-8 p-2",
                 "w-full",
             )}
         >
             <div className={cn("flex flex-col gap-y-5 w-full")}>
+
                 <div className={cn("flex justify-center items-start")}>
                     <p>Date Field</p>
                 </div>
 
                 <div className="flex flex-wrap gap-x-5 gap-y-8">
+
+                    {/* ========================================================
+                        Basic
+                    ======================================================== */}
 
                     {/* Basic controlled date field */}
                     <DateField
@@ -42,8 +123,8 @@ export const SandboxDateField = () => {
                         name="date-default"
                         label="Date"
                         description="Select a date"
-                        value={selectedDate}
-                        onChange={(value) => setSelectedDate(value)}
+                        value={defaultDate}
+                        onChange={setDefaultDate}
                     />
 
                     {/* Empty date field */}
@@ -52,9 +133,14 @@ export const SandboxDateField = () => {
                         name="date-empty"
                         label="Empty date"
                         description="No date selected"
-                        value={null}
-                        onChange={() => {}}
+                        value={emptyDate}
+                        onChange={setEmptyDate}
                     />
+
+
+                    {/* ========================================================
+                        Status
+                    ======================================================== */}
 
                     {/* Disabled */}
                     <DateField
@@ -62,9 +148,9 @@ export const SandboxDateField = () => {
                         name="date-disabled"
                         label="Disabled date"
                         description="This date field is disabled"
-                        value={selectedDisabledDate}
+                        value={disabledDate}
                         isDisabled
-                        onChange={(value) => setSelectedDisabledDate(value)}
+                        onChange={setDisabledDate}
                     />
 
                     {/* Read only */}
@@ -73,9 +159,9 @@ export const SandboxDateField = () => {
                         name="date-readonly"
                         label="Read-only date"
                         description="This date field is read-only"
-                        value={selectedDate}
+                        value={readOnlyDate}
                         isReadOnly
-                        onChange={(value) => setSelectedDate(value)}
+                        onChange={setReadOnlyDate}
                     />
 
                     {/* Required */}
@@ -84,19 +170,25 @@ export const SandboxDateField = () => {
                         name="date-required"
                         label="Required date"
                         description="A date is required"
-                        value={selectedRequiredDate}
+                        value={requiredDate}
                         isRequired
-                        onChange={(value) => setSelectedRequiredDate(value)}
+                        onChange={setRequiredDate}
                     />
+
+
+                    {/* ========================================================
+                        Validation
+                    ======================================================== */}
 
                     {/* Invalid */}
                     <DateField
                         id="date-invalid"
                         name="date-invalid"
                         label="Invalid date"
-                        value={selectedInvalidDate}
+                        description="This date field is invalid"
+                        value={invalidDate}
                         isInvalid
-                        onChange={(value) => setSelectedInvalidDate(value)}
+                        onChange={setInvalidDate}
                     />
 
                     {/* Invalid with error */}
@@ -105,30 +197,64 @@ export const SandboxDateField = () => {
                         name="date-invalid-error"
                         label="Invalid date with error"
                         description="This date has a validation error"
-                        value={selectedInvalidDate}
+                        value={invalidErrorDate}
                         isInvalid
                         fieldError="Please select a valid date"
-                        onChange={(value) => setSelectedInvalidDate(value)}
+                        onChange={setInvalidErrorDate}
                     />
+
+                    {/* Invalid + required */}
+                    <DateField
+                        id="date-invalid-required"
+                        name="date-invalid-required"
+                        label="Invalid required date"
+                        description="This date is required and currently invalid"
+                        value={invalidRequiredDate}
+                        isRequired
+                        isInvalid
+                        fieldError="Please select a valid date"
+                        onChange={setInvalidRequiredDate}
+                    />
+
+
+                    {/* ========================================================
+                        Accessibility
+                    ======================================================== */}
 
                     {/* No label */}
                     <DateField
                         id="date-no-label"
                         name="date-no-label"
-                        description="Date field without a label"
-                        value={selectedDate}
-                        ariaLabel="no-label"
-                        onChange={(value) => setSelectedDate(value)}
+                        description="Date field without a visible label"
+                        value={noLabelDate}
+                        ariaLabel="Select date"
+                        onChange={setNoLabelDate}
                     />
 
                     {/* No label or description */}
                     <DateField
                         id="date-no-label-no-description"
                         name="date-no-label-no-description"
-                        value={selectedDate}
-                        ariaLabel="no-label-no-description"
-                        onChange={(value) => setSelectedDate(value)}
+                        value={noLabelNoDescriptionDate}
+                        ariaLabel="Select date without description"
+                        onChange={setNoLabelNoDescriptionDate}
                     />
+
+                    {/* Custom aria-label with visible label */}
+                    <DateField
+                        id="date-aria-label"
+                        name="date-aria-label"
+                        label="Appointment"
+                        description="Custom accessible name"
+                        ariaLabel="Select appointment date"
+                        value={ariaLabelDate}
+                        onChange={setAriaLabelDate}
+                    />
+
+
+                    {/* ========================================================
+                        Styling
+                    ======================================================== */}
 
                     {/* Full width */}
                     <DateField
@@ -136,20 +262,90 @@ export const SandboxDateField = () => {
                         name="date-full-width"
                         label="Full width date"
                         description="This date field uses the full available width"
-                        value={selectedDate}
+                        value={fullWidthDate}
                         fullWidth
-                        onChange={(value) => setSelectedDate(value)}
+                        onChange={setFullWidthDate}
                     />
 
-                    {/* Custom aria-label */}
+                    {/* Custom className */}
                     <DateField
-                        id="date-aria-label"
-                        name="date-aria-label"
-                        ariaLabel="Select appointment date"
-                        label="Appointment"
-                        description="Custom accessible name"
-                        value={selectedDate}
-                        onChange={(value) => setSelectedDate(value)}
+                        id="date-custom-class"
+                        name="date-custom-class"
+                        label="Custom class date"
+                        description="Exercises the className prop"
+                        value={customClassDate}
+                        className="data-testid-custom-date-field"
+                        onChange={setCustomClassDate}
+                    />
+
+
+                    {/* ========================================================
+                        Tooltip
+                    ======================================================== */}
+
+                    <DateField
+                        id="date-tooltip"
+                        name="date-tooltip"
+                        label="Date with tooltip"
+                        description="Date field with additional information"
+                        tooltip="Select the date associated with your appointment"
+                        value={tooltipDate}
+                        onChange={setTooltipDate}
+                    />
+
+
+                    {/* ========================================================
+                        Combined states
+                    ======================================================== */}
+
+                    {/* Disabled + required */}
+                    <DateField
+                        id="date-disabled-required"
+                        name="date-disabled-required"
+                        label="Disabled required date"
+                        description="This field is both disabled and required"
+                        value={disabledRequiredDate}
+                        isDisabled
+                        isRequired
+                        onChange={setDisabledRequiredDate}
+                    />
+
+                    {/* Read-only + required */}
+                    <DateField
+                        id="date-readonly-required"
+                        name="date-readonly-required"
+                        label="Read-only required date"
+                        description="This field is read-only and required"
+                        value={readOnlyRequiredDate}
+                        isReadOnly
+                        isRequired
+                        onChange={setReadOnlyRequiredDate}
+                    />
+
+                    {/* Disabled + invalid */}
+                    <DateField
+                        id="date-disabled-invalid"
+                        name="date-disabled-invalid"
+                        label="Disabled invalid date"
+                        description="This field is disabled and invalid"
+                        value={disabledInvalidDate}
+                        isDisabled
+                        isInvalid
+                        fieldError="This date is unavailable"
+                        onChange={setDisabledInvalidDate}
+                    />
+
+                    {/* Required + invalid + error */}
+                    <DateField
+                        id="date-required-invalid-error"
+                        name="date-required-invalid-error"
+                        label="Required invalid date"
+                        description="Required field with a validation error"
+                        value={requiredInvalidErrorDate}
+                        isRequired
+                        isInvalid
+                        fieldError="Please select a valid date"
+                        onChange={setRequiredInvalidErrorDate}
                     />
 
                 </div>

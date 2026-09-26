@@ -11,9 +11,9 @@ import {
     FieldStyleComponentProps,
     FieldValidationComponentProps,
     FieldValueComponentProps
-} from "../../interfaces/input-field";
+} from "../../interfaces/components/input-field";
 // Utils
-import { cn } from "@lib/utils/css";
+import { cn } from "@lib/utils/css-utils";
 
 interface UrlFieldComponentProps extends
     Omit<FieldBaseComponentProps, "type">,
@@ -34,6 +34,7 @@ export const UrlField = ({
     ariaLabel,
     description,
     placeholder,
+    tooltip,
     // FieldValueComponentProps
     value,
     // FieldStatusComponentProps
@@ -60,6 +61,7 @@ export const UrlField = ({
             ariaLabel={ariaLabel}
             description={description}
             placeholder={placeholder}
+            tooltip={tooltip}
             value={value}
             isDisabled={isDisabled}
             isReadOnly={isReadOnly}
@@ -68,7 +70,6 @@ export const UrlField = ({
             fieldError={fieldError}
             fullWidth={fullWidth}
             className={cn(className)}
-            prefix={<>https://</>}
             suffix={<GlobeIcon size={16} />}
             prefixClassName={cn("pr-1")}
             onChange={onChange}

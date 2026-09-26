@@ -8,7 +8,7 @@ import type { LucideIcon } from "lucide-react";
 // Components
 import type { IconVariant } from "@design-system/icons/icon-variants";
 // Utils
-import { cn } from "@lib/utils/css";
+import { cn } from "@lib/utils/css-utils";
 import { getIcon } from "@lib/utils/icon-utils";
 
 // #region Types

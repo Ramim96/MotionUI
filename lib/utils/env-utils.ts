@@ -3,8 +3,8 @@ export function getEnvVariable(name: string) {
     const value = process.env[name];
 
     if (!value) {
-        throw new Error(`Environment variable ${value} does not exists.`);
+        throw new Error(`Environment variable ${name} does not exist.`);
     }
 
-    return process.env[name];
+    return value;
 };

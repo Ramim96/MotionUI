@@ -2,7 +2,7 @@ import React from "react";
 // Components
 import { Description as HeroDescription, Typography } from "@heroui/react";
 // Utils
-import { cn } from "@lib/utils/css";
+import { cn } from "@lib/utils/css-utils";
 
 // #region Types
 

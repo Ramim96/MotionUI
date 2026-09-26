@@ -11,9 +11,9 @@ import {
     FieldStyleComponentProps,
     FieldValidationComponentProps,
     FieldValueComponentProps
-} from "../../interfaces/input-field";
+} from "../../interfaces/components/input-field";
 // Utils
-import { cn } from "@lib/utils/css";
+import { cn } from "@lib/utils/css-utils";
 
 interface TelFieldComponentProps extends
     Omit<FieldBaseComponentProps, "type">,
@@ -34,6 +34,7 @@ export const TelField = ({
     ariaLabel,
     description,
     placeholder,
+    tooltip,
     // FieldValueComponentProps
     value,
     // FieldStatusComponentProps
@@ -60,6 +61,7 @@ export const TelField = ({
             ariaLabel={ariaLabel}
             description={description}
             placeholder={placeholder}
+            tooltip={tooltip}
             value={value}
             isDisabled={isDisabled}
             isReadOnly={isReadOnly}

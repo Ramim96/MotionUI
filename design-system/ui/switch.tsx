@@ -10,6 +10,7 @@ import type { LucideIcon } from "lucide-react";
 import { Description } from "@design-system/ui/typography";
 import { IconVariant } from "@design-system/icons/icon-variants";
 import { IconFactory } from "@design-system/icons/icon-factory";
+import { Info } from "./tooltip";
 // Interfaces
 import {
     FieldBaseComponentProps,
@@ -17,9 +18,9 @@ import {
     FieldStatusComponentProps,
     FieldStyleComponentProps,
     FieldValidationComponentProps
-} from "../../interfaces/input-field";
+} from "../../interfaces/components/input-field";
 // Utils
-import { cn } from "@lib/utils/css";
+import { cn } from "@lib/utils/css-utils";
 
 export type LabelPositionType =
     | "left"
@@ -72,6 +73,7 @@ export const Switch = ({
     label,
     ariaLabel,
     description,
+    tooltip,
     // FieldStatusComponentProps
     isDisabled,
     isReadOnly,
@@ -95,7 +97,13 @@ export const Switch = ({
             <div className={cn("flex flex-col", flexPosition)}>
                 {
                     label &&
-                        <Label htmlFor={id}>{label}</Label>
+                        <div className={cn("flex justify-between items-center")}>
+                            <Label htmlFor={id}>{label}</Label>
+                            {
+                                tooltip &&
+                                    <Info tooltipContent={tooltip} />
+                            }
+                        </div>
                 }
                 {
                     description &&
@@ -186,25 +194,63 @@ export const Switch = ({
 
 // #region Switch group
 
-interface SwitchGroupComponentProps {
+interface SwitchGroupComponentProps
+    extends Omit<FieldBaseComponentProps, "type" | "id" | "name" | "variant" | "ariaLabel" | "placeholder">,
+    FieldStatusComponentProps,
+    FieldValidationComponentProps,
+    Omit<FieldStyleComponentProps, "fullWidth"> {
     children: React.ReactNode;
     orientation?: SwitchGroupOrientationType;
-    className?: string;
 };
 
 export const SwitchGroup = ({
     children,
-    orientation = "vertical",
+    orientation,
+    // FieldBaseComponentProps
+    label,
+    description,
+    tooltip,
+    // FieldStatusComponentProps
+    isDisabled,
+    isRequired,
+    // FieldValidationComponentProps
+    isInvalid,
+    // FieldStyleComponentProps
     className,
 }: SwitchGroupComponentProps) => {
 
     return (
-        <HeroSwitchGroup
-            orientation={orientation}
-            className={className}
-        >
-            {children}
-        </HeroSwitchGroup>
+        <div className={cn("flex flex-col gap-y-1")}>
+            {
+                label &&
+                    <div className={cn("flex justify-between items-center")}>
+                        <Label
+                            isDisabled={isDisabled}
+                            isRequired={isRequired}
+                            isInvalid={isInvalid}
+                        >
+                            {label}
+                        </Label>
+                        {
+                            tooltip &&
+                                <Info
+                                    tooltipContent={tooltip}
+                                    triggerClassName={cn("ml-2")}
+                                />
+                        }
+                    </div>
+            }
+            {
+                description &&
+                    <Description>{description}</Description>
+            }
+            <HeroSwitchGroup
+                orientation={orientation}
+                className={className}
+            >
+                {children}
+            </HeroSwitchGroup>
+        </div>
     );
 };
 

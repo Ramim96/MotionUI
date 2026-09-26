@@ -10,7 +10,7 @@ import { FormContextProvider, FormFieldDataType } from "@contexts/form-context";
 // Hooks
 import { useFormContext } from "@hooks/use-form-context";
 // Utils
-import { cn } from "@lib/utils/css";
+import { cn } from "@lib/utils/css-utils";
 
 // #region Form
 
